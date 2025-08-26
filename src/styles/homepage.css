@@ -1,0 +1,166 @@
+@import "tailwindcss";
+@import "./global.css";
+
+/* COMPONENTS */
+@layer components {
+    /* BUTTON */
+    .button-primary,
+    .button-secondary,
+    .button-small-primary,
+    .button-small-secondary,
+    .button-navbar,
+    .button-navbar-reverse {
+        @apply w-fit py-[16px] px-[24px] text-[0.875rem] text-light rounded-full bg-primary border border-transparent flex items-center gap-[8px] text-nowrap;
+    }
+
+    .button-primary,
+    .button-small-primary {
+        @apply hover:bg-transparent hover:text-primary hover:border-primary;
+    }
+
+    .button-secondary,
+    .button-small-secondary {
+        @apply border-dark/[0.12] text-dark bg-transparent;
+        @apply hover:bg-dark hover:text-light hover:border-transparent;
+    }
+
+    .button-small-primary,
+    .button-small-secondary {
+        @apply py-[12px] px-[16px] text-[0.75rem];
+    }
+
+    .button-navbar,
+    .button-navbar-reverse {
+        @apply py-[14px] px-[16px] text-[0.813rem] bg-dark text-light;
+    }
+
+    .button-navbar {
+        @apply hover:border-dark/[0.12] hover:text-dark hover:bg-transparent;
+    }
+
+    .button-navbar-reverse {
+        @apply bg-transparent text-dark border-dark/[0.12];
+        @apply hover:border-dark/[0.24];
+    }
+
+    .button-arrow {
+        @apply w-[48px] h-[48px] aspect-square flex items-center justify-center border border-dark/[0.12] rounded-[12px] bg-transparent;
+        @apply hover:bg-dark hover:border-transparent;
+    }
+
+    .button-search,
+    .button-submit {
+        @apply w-[40px] h-[40px] aspect-square flex items-center justify-center rounded-full bg-primary;
+        @apply hover:contrast-125;
+    }
+    /* END BUTTON */
+
+    /* TEXT */
+    h1.headline {
+        @apply text-dark leading-[150%] text-[2.5rem];
+        @apply md:text-start;
+        @apply lg:text-[2.75rem];
+        @apply xl:text-[3rem];
+    }
+
+    h2.title {
+        @apply text-dark leading-[150%] text-[1.75rem];
+        @apply lg:text-[2rem];
+        @apply xl:text-[2.25rem];
+    }
+
+    p.description {
+        @apply text-[0.913rem] text-dark/[0.62];
+    }
+    /* END TEXT */
+
+    /* DOT */
+    .dot {
+        @apply w-[6px] h-[6px] aspect-square bg-light rounded-full;
+    }
+    /* END DOT */
+
+    /* BADGE */
+    .badge-subtitle {
+        @apply w-fit py-[12px] px-[16px] text-[0.75rem] text-dark flex items-center gap-[8px] rounded-full bg-transparent border border-dark/[0.12];
+    }
+
+    .badge-banner {
+        @apply flex flex-col gap-[6px] absolute left-[40px] bottom-[40px];
+        @apply lg:gap-[8px];
+    }
+
+    .badge-banner .title {
+        @apply text-[1.25rem] text-light;
+        @apply lg:text-[1.5rem];
+    }
+
+    .badge-banner .detail {
+        @apply flex items-center gap-[6px] text-[0.813rem] text-light;
+        @apply lg:gap-[8px] lg:text-[0.875rem];
+    }
+
+    .badge-why-choose-us {
+        @apply flex items-center gap-[8px];
+        @apply lg:gap-[12px];
+    }
+
+    .badge-why-choose-us .why-choose-us-icon {
+        @apply w-[24px] h-[24px] aspect-square flex items-center justify-center rounded-[8px] bg-primary;
+    }
+
+    .badge-why-choose-us .why-choose-us-value {
+        @apply text-[0.913rem] text-dark;
+    }
+    /* END BADGE */
+
+    /* NAVBAR */
+    nav.navbar {
+        @apply w-full absolute top-0 left-0 right-0 py-[20px] bg-transparent;
+        @apply lg:py-[24px];
+    }
+
+    nav.navbar .container {
+        @apply flex items-center justify-between;
+    }
+
+    nav.navbar .container .navbar-brand {
+        @apply hover:opacity-80;
+    }
+    /* END NAVBAR */
+
+    /* SECTION */
+    section .section-t-gap {
+        @apply pt-[100px];
+        @apply lg:pt-[120px];
+    }
+
+    section .section-b-gap {
+        @apply pb-[100px];
+        @apply lg:pb-[120px];
+    }
+
+    section .section-default-gap {
+        @apply flex flex-col gap-[44px] items-center;
+        @apply lg:gap-[56px];
+    }
+
+    section .section-header {
+        @apply w-full flex flex-col gap-[12px];
+        @apply lg:w-[800px] lg:gap-[16px];
+    }
+
+    section .section-header .title,
+    section .section-header .description {
+        @apply w-full text-start;
+    }
+    /* END SECTION */
+}
+
+/* END COMPONENTS */
+
+/* UTILITIES */
+/*@layer utilities {*/
+/*    */
+/*}*/
+/* END UTILITIES */
