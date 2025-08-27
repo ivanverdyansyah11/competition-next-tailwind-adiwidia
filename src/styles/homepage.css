@@ -114,6 +114,12 @@
     }
     /* END BADGE */
 
+    /* ICON */
+    .icon {
+        @apply inline-block aspect-square bg-cover bg-no-repeat bg-center;
+    }
+    /* END ICON */
+
     /* NAVBAR */
     nav.navbar {
         @apply w-full absolute top-0 left-0 right-0 py-[20px] bg-transparent;
@@ -127,7 +133,97 @@
     nav.navbar .container .navbar-brand {
         @apply hover:opacity-80;
     }
+
+    nav.navbar .container .navbar-menu {
+        @apply hidden items-center gap-[32px];
+        @apply md:flex;
+    }
+
+    nav.navbar .container .navbar-menu .menu-link {
+        @apply relative text-[0.913rem] text-dark;
+        @apply hover:text-primary;
+        @apply before:transition-all before:content-[""] before:w-0 before:h-[1px] before:absolute before:top-[110%] before:right-0 before:border-b before:border-primary;
+        @apply hover:before:transition-all hover:before:w-full hover:before:right-auto hover:before:left-0;
+    }
+
+    nav.navbar .container .navbar-menu .menu-link.active {
+        @apply text-primary;
+        @apply before:!w-full before:!right-auto before:!left-0;
+    }
+
+    nav.navbar .container .navbar-menu .menu-popup {
+        @apply p-[16px] w-[640px] absolute z-[2] top-[200%] left-1/2 -translate-x-1/2 bg-light rounded-[20px] border border-dark/[0.12] hidden grid-cols-3 gap-[8px];
+        @apply before:content-[""] before:absolute before:z-[1] before:-top-[6px] before:left-1/2 before:-translate-x-1/2 before:rotate-45 before:w-[12px] before:h-[12px] before:bg-light before:border before:border-dark/[0.12] before:rounded-[2px];
+    }
+
+    nav.navbar .container .navbar-menu .menu-popup.show {
+        @apply grid;
+    }
+
+    nav.navbar .container .navbar-menu .menu-popup .popup-button {
+        @apply w-full text-nowrap flex items-center gap-[8px] py-[6px] pl-[6px] pr-[16px] border border-dark/[0.12] rounded-full bg-transparent text-[0.75rem] text-dark;
+    }
+
+    nav.navbar .container .navbar-menu .menu-popup .popup-button .button-icon {
+        @apply bg-transparent rounded-full w-[32px] h-[32px] aspect-square flex items-center justify-center border border-dark/[0.12];
+    }
+
+    nav.navbar .container .navbar-hamburger {
+        @apply flex;
+        @apply md:hidden;
+    }
     /* END NAVBAR */
+
+    /* SIDEBAR */
+    aside.sidebar {
+        @apply -translate-x-full fixed w-full h-dvh top-0 left-0 right-0 bottom-0 bg-light p-[24px] flex flex-col gap-[24px];
+    }
+
+    aside.sidebar.show {
+        @apply translate-x-0;
+    }
+
+    aside.sidebar .sidebar-header {
+        @apply flex items-center justify-between;
+    }
+
+    aside.sidebar .sidebar-header .header-brand {
+        @apply hover:opacity-80;
+    }
+
+    aside.sidebar .sidebar-menu {
+        @apply flex flex-col gap-[20px] h-full overflow-y-auto;
+    }
+
+    aside.sidebar .sidebar-menu .menu-link-wrapper {
+        @apply flex flex-col gap-[20px];
+    }
+
+    aside.sidebar .sidebar-menu .menu-link {
+        @apply w-full text-[0.913rem] text-start flex justify-between items-center;
+        @apply hover:text-primary;
+    }
+
+    aside.sidebar .sidebar-menu .menu-link.active {
+        @apply text-primary;
+    }
+
+    aside.sidebar .sidebar-menu .menu-popup {
+        @apply w-full hidden flex-wrap gap-[8px];
+    }
+
+    aside.sidebar .sidebar-menu .menu-popup.show {
+        @apply flex;
+    }
+
+    aside.sidebar .sidebar-menu .menu-popup .popup-button {
+        @apply w-fit text-nowrap flex items-center gap-[8px] py-[6px] pl-[6px] pr-[16px] border border-dark/[0.12] rounded-full bg-transparent text-[0.75rem] text-dark;
+    }
+
+    aside.sidebar .sidebar-menu .menu-popup .popup-button .button-icon {
+        @apply bg-transparent rounded-full w-[32px] h-[32px] aspect-square flex items-center justify-center border border-dark/[0.12];
+    }
+    /* END SIDEBAR */
 
     /* SECTION */
     section .section-t-gap {
@@ -155,6 +251,24 @@
         @apply w-full text-start;
     }
     /* END SECTION */
+
+    /* SCROLLBAR */
+    aside.sidebar .sidebar-menu::-webkit-scrollbar {
+        @apply h-full w-[4px];
+    }
+
+    aside.sidebar .sidebar-menu::-webkit-scrollbar-track {
+        @apply bg-dark/[0.04] rounded-full;
+    }
+
+    aside.sidebar .sidebar-menu::-webkit-scrollbar-thumb {
+        @apply bg-dark/[0.08] rounded-full;
+    }
+
+    aside.sidebar .sidebar-menu::-webkit-scrollbar-thumb:hover {
+        @apply bg-dark/[0.12];
+    }
+    /* END SCROLLBAR */
 }
 
 /* END COMPONENTS */
