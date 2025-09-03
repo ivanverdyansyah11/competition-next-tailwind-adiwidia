@@ -3,12 +3,14 @@ import SectionWhyChooseUs from "@/components/Organisms/Section/SectionWhyChooseU
 import SectionCTA from "@/components/Organisms/Section/SectionCTA";
 import Footer from "@/components/Organisms/Section/Footer";
 import SectionAboutHero from "@/components/Organisms/Section/SectionAboutHero";
+import SectionFactAnalyst from "@/components/Organisms/Section/SectionFactAnalyst";
 
 export default function AboutPage() {
     return (
         <main className="main">
             <div className="container section-pb-gap">
                 <SectionAboutHero/>
+                <SectionFactAnalyst/>
                 <SectionAbout
                     title="Membangun Ruang Digital untuk Melestarikan Budaya Indonesia"
                     descriptions={[
