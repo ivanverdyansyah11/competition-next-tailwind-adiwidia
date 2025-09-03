@@ -127,6 +127,10 @@
         @apply w-[4px] h-[4px];
     }
 
+    .icon {
+        @apply aspect-square bg-cover bg-center bg-no-repeat;
+    }
+
     .element-wrapper {
         @apply overflow-hidden !w-fit;
     }
@@ -334,6 +338,44 @@
         @apply xl:w-[24px] xl:h-[24px];
     }
     /* END SECTION GALLERY */
+
+    /* SECTION FAQ */
+    section.section-faq .section-content {
+        @apply w-full columns-1 gap-[16px] space-y-[16px];
+        @apply lg:columns-2 lg:gap-[20px] lg:space-y-[20px];
+    }
+
+    section.section-faq .section-content .card-faq {
+        @apply p-[16px] flex flex-col border border-dark/[0.12] w-full rounded-[12px] cursor-pointer break-inside-avoid;
+        @apply lg:p-[20px] lg:rounded-[16px];
+    }
+
+    section.section-faq .section-content .card-faq .faq-header {
+        @apply flex items-center justify-between gap-[12px];
+    }
+
+    section.section-faq .section-content .card-faq .faq-header .header-question {
+        @apply text-[0.913rem];
+    }
+
+    section.section-faq .section-content .card-faq .faq-header .header-icon {
+        @apply w-[24px] h-[24px] aspect-square flex items-center justify-center rounded-[8px] border border-dark/[0.12];
+        @apply hover:bg-dark/[0.04];
+    }
+
+    section.section-faq .section-content .card-faq .faq-answer {
+        @apply overflow-hidden;
+    }
+
+    section.section-faq .section-content .card-faq .faq-answer .answer {
+        @apply border-t border-transparent;
+    }
+
+    section.section-faq .section-content .card-faq .faq-answer .answer {
+        @apply text-[0.875rem] text-dark/[0.62] pt-[12px] mt-[12px] border-dark/[0.12];
+        @apply lg:pt-[16px] lg:mt-[16px];
+    }
+    /* END SECTION FAQ */
 
     /* PAGE MAIN: SECTION HERO */
     main.main section.section-hero {

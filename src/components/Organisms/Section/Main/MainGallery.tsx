@@ -6,9 +6,7 @@ import useFancybox from "@/hooks/useFancybox";
 import Link from "next/link";
 
 export default function MainGallery() {
-    const [galleriesRef] = useFancybox({
-        // Your custom options
-    });
+    const [galleriesRef] = useFancybox({});
 
     return (
         <section className="section-gallery section-content-gap section-mt-gap">
