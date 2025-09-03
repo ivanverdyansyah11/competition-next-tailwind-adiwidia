@@ -1,7 +1,10 @@
+'use client'
+
+import MainPage from "@/components/Templates/MainPage";
+import {useLenisScroll} from "@/hooks/useLenisScroll";
+
 export default function Main() {
-  return (
-    <>
-      <p>Lorem ipsum dolor sit amet.</p>
-    </>
-  );
+    useLenisScroll();
+
+    return <MainPage/>;
 }

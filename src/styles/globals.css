@@ -38,13 +38,13 @@
     --color-light: #FFFFFF;
     --color-gray: #F7F7F7;
 
-    --font-plus-jakarta-sans-black: 'plus-jakarta-sans-black', Arial, Helvetica, sans-serif;
-    --font-plus-jakarta-sans-extrabold: 'plus-jakarta-sans-extrabold', Arial, Helvetica, sans-serif;
-    --font-plus-jakarta-sans-bold: 'plus-jakarta-sans-bold', Arial, Helvetica, sans-serif;
-    --font-plus-jakarta-sans-semibold: 'plus-jakarta-sans-semibold', Arial, Helvetica, sans-serif;
-    --font-plus-jakarta-sans-medium: 'plus-jakarta-sans-medium', Arial, Helvetica, sans-serif;
-    --font-plus-jakarta-sans-regular: 'plus-jakarta-sans-regular', Arial, Helvetica, sans-serif;
-    --font-plus-jakarta-sans-light: 'plus-jakarta-sans-light', Arial, Helvetica, sans-serif;
+    --font-default-black: 'plus-jakarta-sans-black', Arial, Helvetica, sans-serif;
+    --font-default-extrabold: 'plus-jakarta-sans-extrabold', Arial, Helvetica, sans-serif;
+    --font-default-bold: 'plus-jakarta-sans-bold', Arial, Helvetica, sans-serif;
+    --font-default-semibold: 'plus-jakarta-sans-semibold', Arial, Helvetica, sans-serif;
+    --font-default-medium: 'plus-jakarta-sans-medium', Arial, Helvetica, sans-serif;
+    --font-default-regular: 'plus-jakarta-sans-regular', Arial, Helvetica, sans-serif;
+    --font-default-light: 'plus-jakarta-sans-light', Arial, Helvetica, sans-serif;
 
     --spacing-container-default: 1rem;
     --spacing-container-sm: 2rem;
@@ -56,8 +56,8 @@
 /* BASE */
 @layer base {
     * {
-        @apply text-dark font-plus-jakarta-sans-medium transition-all duration-300;
-        /*transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;*/
+        @apply text-dark font-default-medium duration-300;
+        transition-property: color, background-color, background-image, border-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, box-shadow, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
     }
 
     html,
