@@ -5,7 +5,7 @@ import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
 
 export default function HeaderMainHero() {
     return (
-        <div className="section-header gap-0 mb-[40px] lg:mb-[60px]">
+        <div className="section-header gap-0">
             <div className="element-wrapper mb-[12px] lg:mb-[16px]">
                 <BadgeSubtitle
                     icon="/image/icon/globe/globe-primary.svg"

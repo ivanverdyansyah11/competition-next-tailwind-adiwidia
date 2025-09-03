@@ -175,7 +175,37 @@
 
 /* UTILITIES */
 @layer utilities {
+    /* SECTION FEATURED */
+    section.section-featured .featured-grid {
+        @apply columns-2 gap-[16px] space-y-[16px];
+        @apply lg:columns-4 lg:gap-[20px] lg:space-y-[20px];
+    }
+
+    section.section-featured .featured-grid .card-featured {
+        @apply flex flex-col p-[16px] rounded-[12px] border border-dark/[0.12];
+        @apply lg:p-[20px] lg:rounded-[20px];
+    }
+
+    section.section-featured .featured-grid .card-featured .featured-icon {
+        @apply flex items-center justify-center w-[48px] h-[48px] aspect-square rounded-[8px] border border-dark/[0.12] mb-[20px];
+        @apply lg:rounded-[12px] lg:mb-[24px];
+    }
+
+    section.section-featured .featured-grid .card-featured .featured-title {
+        @apply text-[0.913rem] mb-[4px];
+    }
+
+    section.section-featured .featured-grid .card-featured .featured-description {
+        @apply text-[0.875rem] text-dark/[0.62];
+    }
+    /* END SECTION FEATURED */
+
     /* PAGE MAIN: SECTION HERO */
+    main.main section.section-hero {
+        @apply flex flex-col gap-[40px];
+        @apply lg:gap-[60px];
+    }
+
     main.main section.section-hero .section-banner {
         @apply aspect-square rounded-[32px] overflow-hidden;
         @apply md:h-[440px] md:rounded-[40px];
