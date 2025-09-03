@@ -17,7 +17,7 @@ export default function Footer() {
                         <h6 className="link-title">Tautan Cepat</h6>
                         <div className="link-grid grid-cols-1">
                             <Link href="/" className="link">Beranda</Link>
-                            <Link href="/about-us" className="link">Tentang Kami</Link>
+                            <Link href="/about" className="link">Tentang Kami</Link>
                             <Link href="/gallery" className="link">Galeri</Link>
                             <Link href="/collection" className="link">Jelajahi Koleksi 3D</Link>
                         </div>

@@ -3,8 +3,10 @@ import Headline from "@/components/Atoms/Text/Headline";
 import Description from "@/components/Atoms/Text/Description";
 import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
 
+type StyleType = "button-primary" | "button-secondary" | "button-light" | "button-small-primary" | "button-small-secondary";
+
 type ButtonProps = {
-    style: string,
+    style: StyleType,
     redirect: string,
     label: string,
 }
@@ -36,16 +38,14 @@ export default function SectionHero({icon, subtitle, headline, description, butt
                 </div>
                 {buttons && buttons.length > 0 && (
                     <div className="button-group element-wrapper">
-                        <ButtonCustom
-                            style="button-primary"
-                            redirect="/about#category"
-                            label="Eksplorasi Budaya"
-                        />
-                        <ButtonCustom
-                            style="button-secondary"
-                            redirect="/#featured"
-                            label="Pelajari Lebih Lanjut"
-                        />
+                        {buttons.map((button, index) => (
+                            <ButtonCustom
+                                key={index}
+                                style={button.style}
+                                redirect={button.redirect}
+                                label={button.label}
+                            />
+                        ))}
                     </div>
                 )}
             </div>

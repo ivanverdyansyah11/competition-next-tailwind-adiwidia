@@ -5,7 +5,11 @@ import Description from "@/components/Atoms/Text/Description";
 import BadgeWhyChooseUs from "@/components/Atoms/Badge/BadgeWhyChooseUs";
 import FactAnalyst from "@/components/Atoms/Text/FactAnalyst";
 
-export default function SectionWhyChooseUs() {
+type Props = {
+    showFactAnalyst?: boolean;
+}
+
+export default function SectionWhyChooseUs({showFactAnalyst = true}: Props) {
     return (
         <section className="section-why-choose-us section-mt-gap">
             <div className="section-content" id="section-content">
@@ -40,11 +44,13 @@ export default function SectionWhyChooseUs() {
                         className="bottom-[20px] left-[20px] md:!bottom-[32px] md:!left-[32px]"
                     />
                 </div>
-                <div className="content-analyst">
-                    <FactAnalyst value="+300" caption="Bahasa Daerah"/>
-                    <FactAnalyst value="+17.000" caption="Pulau di Indonesia"/>
-                    <FactAnalyst value="+1.200" caption="Kebudayaan Kami"/>
-                </div>
+                {showFactAnalyst && (
+                    <div className="content-analyst">
+                        <FactAnalyst value="+300" caption="Bahasa Daerah"/>
+                        <FactAnalyst value="+17.000" caption="Pulau di Indonesia"/>
+                        <FactAnalyst value="+1.200" caption="Kebudayaan Kami"/>
+                    </div>
+                )}
             </div>
         </section>
     )

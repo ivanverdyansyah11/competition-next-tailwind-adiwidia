@@ -4,9 +4,23 @@ import Title from "@/components/Atoms/Text/Title";
 import Description from "@/components/Atoms/Text/Description";
 import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
 
-export default function SectionAboutUs() {
+type StyleType = "button-primary" | "button-secondary" | "button-light" | "button-small-primary" | "button-small-secondary";
+
+type ButtonProps = {
+    style: StyleType,
+    redirect: string,
+    label: string,
+}
+
+type Props = {
+    title: string,
+    descriptions: string[],
+    button?: ButtonProps,
+}
+
+export default function SectionAbout({title, descriptions, button}: Props) {
     return (
-        <section className="section-about-us section-mt-gap">
+        <section className="section-about section-mt-gap">
             <div className="section-banner wrapper-image" id="banner-image-portrait">
                 <Image src="/image/banner/banner-about-1.png" alt="Banner About Us" fill className="banner-image image-full"/>
                 <BadgeBanner
@@ -28,19 +42,23 @@ export default function SectionAboutUs() {
             <div className="section-content">
                 <div className="content-title-wrapper">
                     <div className="content-title element-wrapper mb-[16px] md:mb-[20px] lg:mb-0">
-                        <Title label="Membangun Ruang Digital untuk Melestarikan Budaya Indonesia"/>
+                        <Title label={title}/>
                     </div>
                 </div>
-                <div className="element-wrapper mb-[28px] lg:mb-[32px]">
-                    <Description value="Adiwidia adalah platform digital yang lahir untuk menjaga dan menghidupkan kembali kekayaan budaya Indonesia. Melalui sentuhan inovasi, kami berkomitmen menjadikan warisan budaya tetap relevan, mudah diakses, serta menginspirasi generasi masa kini dan mendatang."/>
+                <div className={`element-wrapper flex flex-col gap-[8px] ${button ? 'mb-[28px] lg:mb-[32px]' : ''}`}>
+                    {descriptions.map((description, index) => (
+                        <Description key={index} value={description}/>
+                    ))}
                 </div>
-                <div className="button-group element-wrapper">
-                    <ButtonCustom
-                        style="button-primary"
-                        redirect="/about"
-                        label="Pelajari Tentang Kami"
-                    />
-                </div>
+                {button && (
+                    <div className="button-group element-wrapper">
+                        <ButtonCustom
+                            style={button.style}
+                            redirect={button.redirect}
+                            label={button.label}
+                        />
+                    </div>
+                )}
             </div>
         </section>
     )
