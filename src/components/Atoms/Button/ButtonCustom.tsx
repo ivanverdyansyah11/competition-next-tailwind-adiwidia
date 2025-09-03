@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type ButtonType = "button" | "submit" | "reset";
-type StyleType = "button-primary" | "button-secondary" | "button-small-primary" | "button-small-secondary";
+type StyleType = "button-primary" | "button-secondary" | "button-light" | "button-small-primary" | "button-small-secondary";
 
 type Props = {
     style: StyleType,

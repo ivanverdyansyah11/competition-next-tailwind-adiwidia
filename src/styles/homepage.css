@@ -6,9 +6,10 @@
     /* BUTTON */
     .button-primary,
     .button-secondary,
+    .button-light,
     .button-small-primary,
     .button-small-secondary {
-        @apply w-fit py-[16px] px-[24px] text-[0.875rem] text-light rounded-full bg-primary border border-transparent flex items-center gap-[8px] text-nowrap;
+        @apply w-fit h-fit py-[16px] px-[24px] text-[0.875rem] text-light rounded-full bg-primary border border-transparent flex items-center gap-[8px] text-nowrap;
     }
 
     .button-primary,
@@ -20,6 +21,11 @@
     .button-small-secondary {
         @apply border-dark/[0.12] text-dark bg-transparent;
         @apply hover:bg-dark hover:text-light hover:border-transparent;
+    }
+
+    .button-light {
+        @apply border-transparent text-dark bg-light;
+        @apply hover:contrast-75 hover:bg-light hover:text-dark hover:border-transparent;
     }
 
     .button-small-primary,
@@ -140,7 +146,7 @@
     }
 
     .image-full {
-        @apply w-full object-cover;
+        @apply relative w-full object-cover;
     }
     /* END OTHER */
 
@@ -376,6 +382,29 @@
         @apply lg:pt-[16px] lg:mt-[16px];
     }
     /* END SECTION FAQ */
+
+    /* SECTION CTA */
+    section.section-cta {
+        @apply p-[20px] pt-[200px] flex items-end rounded-[32px] overflow-hidden bg-[url('/image/banner/banner-cta.png')] bg-cover bg-center bg-no-repeat;
+        @apply md:h-[440px] md:p-[32px] md:rounded-[40px];
+        @apply lg:h-[520px] lg:p-[40px] lg:rounded-[60px];
+    }
+
+    section.section-cta .cta-content {
+        @apply flex flex-col gap-[28px];
+        @apply lg:flex-row lg:items-end lg:gap-[32px];
+    }
+
+    section.section-cta .cta-content .content-data {
+        @apply flex flex-col gap-[12px];
+        @apply lg:gap-[16px];
+    }
+
+    section.section-cta .cta-content .content-data .data-title,
+    section.section-cta .cta-content .content-data .data-description {
+        @apply text-light text-start;
+    }
+    /* END SECTION CTA */
 
     /* PAGE MAIN: SECTION HERO */
     main.main section.section-hero {
