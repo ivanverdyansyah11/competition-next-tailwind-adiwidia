@@ -4,11 +4,12 @@ import MainWhyChooseUs from "@/components/Organisms/Section/Main/MainWhyChooseUs
 import MainGallery from "@/components/Organisms/Section/Main/MainGallery";
 import MainFAQ from "@/components/Organisms/Section/Main/MainFAQ";
 import SectionCTA from "@/components/Organisms/Section/SectionCTA";
+import Footer from "@/components/Organisms/Section/Footer";
 
 export default function MainPage() {
     return (
         <main className="main">
-            <div className="container mb-[500px]">
+            <div className="container section-pb-gap">
                 <MainHero/>
                 <MainAboutUs/>
                 <MainWhyChooseUs/>
@@ -16,6 +17,7 @@ export default function MainPage() {
                 <MainFAQ/>
                 <SectionCTA/>
             </div>
+            <Footer/>
         </main>
     );
 }

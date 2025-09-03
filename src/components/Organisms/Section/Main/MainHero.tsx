@@ -43,7 +43,7 @@ export default function MainHero() {
                 />
             </div>
             <section className="section-featured">
-                <div className="featured-grid">
+                <div className="section-content">
                     <CardFeatured
                         icon="/image/icon/earth/earth-primary.svg"
                         title="Peta Interaktif Budaya Nusantara"

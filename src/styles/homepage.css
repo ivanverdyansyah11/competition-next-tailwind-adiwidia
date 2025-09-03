@@ -151,22 +151,22 @@
     /* END OTHER */
 
     /* SECTION */
-    section.section-pt-gap {
+    .section-pt-gap {
         @apply pt-[120px];
         @apply lg:pt-[160px];
     }
 
-    section.section-pb-gap {
+    .section-pb-gap {
         @apply pb-[120px];
         @apply lg:pb-[160px];
     }
 
-    section.section-mt-gap {
+    .section-mt-gap {
         @apply mt-[120px];
         @apply lg:mt-[160px];
     }
 
-    section.section-mb-gap {
+    .section-mb-gap {
         @apply mb-[120px];
         @apply lg:mb-[160px];
     }
@@ -186,34 +186,38 @@
         @apply w-full text-start;
         @apply md:text-center;
     }
+
+    main.main,
+    main.main > .container {
+        @apply relative z-[1] bg-light;
+    }
     /* END SECTION */
 }
-
 /* END COMPONENTS */
 
 /* UTILITIES */
 @layer utilities {
     /* SECTION FEATURED */
-    section.section-featured .featured-grid {
+    section.section-featured .section-content {
         @apply columns-2 gap-[16px] space-y-[16px];
         @apply lg:columns-4 lg:gap-[20px] lg:space-y-[20px];
     }
 
-    section.section-featured .featured-grid .card-featured {
+    section.section-featured .section-content .card-featured {
         @apply break-inside-avoid flex flex-col p-[16px] rounded-[12px] border border-dark/[0.12];
         @apply lg:p-[20px] lg:rounded-[20px];
     }
 
-    section.section-featured .featured-grid .card-featured .featured-icon {
+    section.section-featured .section-content .card-featured .featured-icon {
         @apply flex items-center justify-center w-[48px] h-[48px] aspect-square rounded-[8px] border border-dark/[0.12] mb-[20px];
         @apply lg:rounded-[12px] lg:mb-[24px];
     }
 
-    section.section-featured .featured-grid .card-featured .featured-title {
+    section.section-featured .section-content .card-featured .featured-title {
         @apply text-[0.913rem] mb-[4px];
     }
 
-    section.section-featured .featured-grid .card-featured .featured-description {
+    section.section-featured .section-content .card-featured .featured-description {
         @apply text-[0.875rem] text-dark/[0.62];
     }
     /* END SECTION FEATURED */
@@ -405,6 +409,60 @@
         @apply text-light text-start;
     }
     /* END SECTION CTA */
+
+    /* FOOTER */
+    footer.footer {
+        @apply bg-[#f7f7f7] flex flex-col gap-[80px] pt-[100px] sticky z-0 bottom-0;
+        @apply lg:gap-[100px] lg:pt-[120px];
+    }
+
+    footer.footer .footer-content {
+        @apply flex flex-col gap-[40px];
+        @apply lg:flex-row lg:justify-between;
+    }
+
+    footer.footer .footer-content .content-brand {
+        @apply w-full flex flex-col gap-[12px];
+        @apply lg:w-[360px] lg:gap-[16px];
+        @apply xl:w-[400px];
+    }
+
+    footer.footer .footer-content .content-brand .brand-logo {
+        @apply w-fit;
+        @apply hover:-rotate-2 hover:scale-[102%];
+    }
+
+    footer.footer .footer-content .content-link {
+        @apply w-full flex flex-col gap-[40px];
+        @apply md:flex-row;
+        @apply lg:w-fit;
+    }
+
+    footer.footer .footer-content .content-link .link-group {
+        @apply w-full flex flex-col gap-[16px];
+        @apply lg:w-fit;
+    }
+
+    footer.footer .footer-content .content-link .link-title {
+        @apply text-[0.913rem];
+    }
+
+    footer.footer .footer-content .content-link .link-grid {
+        @apply grid gap-[16px];
+    }
+
+    footer.footer .footer-content .content-link .link-grid .link {
+        @apply relative w-fit text-[0.875rem] text-dark/[0.62] text-nowrap;
+        @apply before:transition-all before:duration-300 before:content-[''] before:absolute before:top-[120%] before:right-0 before:w-0 before:h-[1px] before:bg-primary;
+        @apply hover:text-primary;
+        @apply hover:before:right-auto hover:before:left-0 hover:before:w-full;
+    }
+
+    footer.footer .footer-copyright {
+        @apply py-[16px] border-t border-dark/[0.12] text-[0.875rem] text-dark/[0.42];
+        @apply lg:py-[20px];
+    }
+    /* END FOOTER */
 
     /* PAGE MAIN: SECTION HERO */
     main.main section.section-hero {
