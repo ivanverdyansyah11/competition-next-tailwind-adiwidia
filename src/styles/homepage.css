@@ -49,7 +49,7 @@
     }
 
     .badge-banner {
-        @apply flex flex-col gap-[6px] absolute left-[24px] bottom-[24px];
+        @apply flex flex-col gap-[6px] absolute left-[20px] bottom-[20px];
         @apply md:left-[32px] md:bottom-[32px];
         @apply lg:left-[40px] lg:bottom-[40px];
     }
@@ -75,8 +75,8 @@
     }
 
     .badge-why-choose-us {
-        @apply flex items-center gap-[8px];
-        @apply lg:gap-[12px];
+        @apply flex items-center gap-[6px];
+        @apply lg:gap-[8px];
     }
 
     .badge-why-choose-us .why-choose-us-icon {
@@ -107,6 +107,14 @@
 
     p.description.small {
         @apply text-[0.875rem];
+    }
+
+    .fact-analyst {
+        @apply flex flex-col gap-[4px] items-center text-center;
+    }
+
+    .fact-analyst .analyst-caption {
+        @apply text-[0.813rem] text-dark/[0.62];
     }
     /* END TEXT */
 
@@ -235,6 +243,50 @@
         @apply lg:col-span-2 lg:col-start-2;
     }
     /* END SECTION ABOUT US */
+
+    /* SECTION WHY CHOOSE US */
+    section.section-why-choose-us {
+        @apply grid grid-cols-1 gap-[40px];
+        @apply lg:grid-cols-2;
+    }
+
+    section.section-why-choose-us .section-content#section-content {
+        @apply h-fit flex flex-col justify-between;
+        @apply lg:h-full;
+    }
+
+    section.section-why-choose-us .section-content#section-content .content-description {
+        @apply flex flex-col gap-[8px];
+    }
+
+    section.section-why-choose-us .section-content#section-content .content-point {
+        @apply mt-0 grid grid-cols-1 gap-[12px];
+        @apply md:grid-cols-2;
+        @apply lg:mt-auto;
+    }
+
+    section.section-why-choose-us .section-content#section-banner {
+        @apply flex flex-col gap-[24px];
+        @apply md:gap-[32px];
+        @apply lg:gap-[40px];
+    }
+
+    section.section-why-choose-us .section-content#section-banner .content-banner {
+        @apply aspect-square rounded-[32px] overflow-hidden;
+        @apply md:rounded-[40px] md:aspect-video;
+        @apply lg:aspect-square;
+    }
+
+    section.section-why-choose-us .section-content#section-banner .content-analyst {
+        @apply grid grid-cols-2 gap-[32px];
+        @apply md:grid-cols-3 md:gap-[20px];
+    }
+
+    section.section-why-choose-us .section-content#section-banner .content-analyst .fact-analyst {
+        @apply last:col-span-2;
+        @apply md:last:col-span-1;
+    }
+    /* END SECTION WHY CHOOSE US */
 
     /* PAGE MAIN: SECTION HERO */
     main.main section.section-hero {
