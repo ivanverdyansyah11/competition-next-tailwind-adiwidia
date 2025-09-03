@@ -1,6 +1,7 @@
 import MainHero from "@/components/Organisms/Section/Main/MainHero";
 import MainAboutUs from "@/components/Organisms/Section/Main/MainAboutUs";
 import MainWhyChooseUs from "@/components/Organisms/Section/Main/MainWhyChooseUs";
+import MainGallery from "@/components/Organisms/Section/Main/MainGallery";
 
 export default function MainPage() {
     return (
@@ -9,6 +10,7 @@ export default function MainPage() {
                 <MainHero/>
                 <MainAboutUs/>
                 <MainWhyChooseUs/>
+                <MainGallery/>
             </div>
         </main>
     );
