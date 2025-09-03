@@ -5,7 +5,7 @@ import CardGallery from "@/components/Molecules/Card/CardGallery";
 import useFancybox from "@/hooks/useFancybox";
 import Link from "next/link";
 
-export default function MainGallery() {
+export default function SectionGallery() {
     const [galleriesRef] = useFancybox({});
 
     return (

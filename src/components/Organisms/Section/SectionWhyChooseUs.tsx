@@ -5,7 +5,7 @@ import Description from "@/components/Atoms/Text/Description";
 import BadgeWhyChooseUs from "@/components/Atoms/Badge/BadgeWhyChooseUs";
 import FactAnalyst from "@/components/Atoms/Text/FactAnalyst";
 
-export default function MainWhyChooseUs() {
+export default function SectionWhyChooseUs() {
     return (
         <section className="section-why-choose-us section-mt-gap">
             <div className="section-content" id="section-content">

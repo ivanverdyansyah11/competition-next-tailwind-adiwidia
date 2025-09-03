@@ -4,7 +4,7 @@ import Title from "@/components/Atoms/Text/Title";
 import Description from "@/components/Atoms/Text/Description";
 import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
 
-export default function MainAboutUs() {
+export default function SectionAboutUs() {
     return (
         <section className="section-about-us section-mt-gap">
             <div className="section-banner wrapper-image" id="banner-image-portrait">

@@ -3,7 +3,7 @@ import Description from "@/components/Atoms/Text/Description";
 import CardFAQ from "@/components/Molecules/Card/CardFAQ";
 import {useState} from "react";
 
-export default function MainFAQ() {
+export default function SectionFAQ() {
     const [faqOpen, setFAQOpen] = useState<number | null>(null);
 
     const toggleFAQ = ({number}: {number: number}) => {
