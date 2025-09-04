@@ -1,6 +1,5 @@
 import "@/styles/homepage.css";
-import ScrollProgressBar from "@/components/Atoms/ScrollProgressBar";
-import Navbar from "@/components/Organisms/Navbar";
+import NavbarMini from "@/components/Organisms/NavbarMini";
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
@@ -31,8 +30,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
     return (
         <html lang="en">
         <body>
-        <ScrollProgressBar/>
-        <Navbar/>
+        <NavbarMini/>
         <div className="content-homepage">
             {children}
         </div>

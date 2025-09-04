@@ -13,7 +13,6 @@ export default function CardCollection({title, description, redirect}: Props) {
             <p className="collection-description">{description}</p>
             <ButtonCustom
                 redirect={redirect}
-                linkTarget="_blank"
                 style="button-small-secondary"
                 label="Lihat Koleksi"
                 className="w-full"

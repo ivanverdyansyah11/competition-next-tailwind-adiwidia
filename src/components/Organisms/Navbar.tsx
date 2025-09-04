@@ -29,10 +29,10 @@ export default function Navbar() {
                         <button type="button" className={`menu-item ${pathname.startsWith('/culture') ? 'active' : ''}`} onClick={togglePopupCategory}>Kategori</button>
                         <Link href="/collection" className={`menu-item ${pathname.startsWith('/collection') ? 'active' : ''}`} onClick={() => setIsPopupCategoryOpen(false)}>Koleksi</Link>
                     </div>
-                    <Link href="/chat" className="navbar-button w-fit">
+                    <a href="/chat" target="_blank" className="navbar-button w-fit">
                         Tanya AI
                         <Image src="/image/icon/chat/chat-light.svg" alt="Chat Icon" width={16} height={16}/>
-                    </Link>
+                    </a>
                 </div>
             </nav>
             <AnimatePresence>

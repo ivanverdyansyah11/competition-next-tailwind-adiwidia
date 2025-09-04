@@ -1,3 +1,5 @@
+'use client'
+
 import SectionMainHero from "@/components/Organisms/Section/SectionMainHero";
 import SectionAbout from "@/components/Organisms/Section/SectionAbout";
 import SectionWhyChooseUs from "@/components/Organisms/Section/SectionWhyChooseUs";
@@ -5,8 +7,11 @@ import SectionGallery from "@/components/Organisms/Section/SectionGallery";
 import SectionFAQ from "@/components/Organisms/Section/SectionFAQ";
 import SectionCTA from "@/components/Organisms/Section/SectionCTA";
 import Footer from "@/components/Organisms/Section/Footer";
+import {useLenisScroll} from "@/hooks/useLenisScroll";
 
 export default function MainPage() {
+    useLenisScroll();
+
     return (
         <main className="main">
             <div className="container section-pb-gap">

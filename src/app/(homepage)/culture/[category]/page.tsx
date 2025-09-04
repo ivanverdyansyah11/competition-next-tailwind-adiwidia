@@ -1,10 +1,13 @@
-'use client'
-
 import CategoryPage from "@/components/Templates/CategoryPage";
-import {useLenisScroll} from "@/hooks/useLenisScroll";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "Kategori Adiwidia - Budaya Inovasi Digital",
+    openGraph: {
+        title: "Kategori Adiwidia - Budaya Inovasi Digital"
+    }
+};
 
 export default function Category() {
-    useLenisScroll();
-
     return <CategoryPage/>;
 }
