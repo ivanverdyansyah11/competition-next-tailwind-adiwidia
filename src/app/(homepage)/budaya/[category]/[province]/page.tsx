@@ -1,10 +1,10 @@
 'use client'
 
-import CulturePage from "@/components/Templates/CulturePage";
+import ProvincePage from "@/components/Templates/ProvincePage";
 import {useLenisScroll} from "@/hooks/useLenisScroll";
 
 export default function Culture() {
     useLenisScroll();
 
-    return <CulturePage/>;
+    return <ProvincePage/>;
 }

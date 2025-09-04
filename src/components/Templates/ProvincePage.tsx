@@ -1,12 +1,12 @@
 import SectionCTA from "@/components/Organisms/Section/SectionCTA";
 import Footer from "@/components/Organisms/Section/Footer";
-import SectionCultureHero from "@/components/Organisms/Section/SectionCultureHero";
+import SectionProvinceHero from "@/components/Organisms/Section/SectionProvinceHero";
 
-export default function CulturePage() {
+export default function ProvincePage() {
     return (
         <main className="main">
             <div className="container section-pb-gap">
-                <SectionCultureHero/>
+                <SectionProvinceHero/>
                 <SectionCTA/>
             </div>
             <Footer/>

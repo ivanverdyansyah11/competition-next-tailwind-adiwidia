@@ -8,7 +8,7 @@ import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
 import {convertSlug} from "@/utils/convert-slug";
 import CardCulture from "@/components/Molecules/Card/CardCulture";
 
-export default function SectionCultureHero() {
+export default function SectionProvinceHero() {
     const pathname = usePathname();
     const { category, province } = useParams<{ category: string; province: string; }>();
     const [search, setSearch] = useState<string>('');
