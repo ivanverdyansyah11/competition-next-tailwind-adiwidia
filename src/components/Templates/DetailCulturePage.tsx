@@ -1,6 +1,5 @@
 'use client'
 
-import Footer from "@/components/Organisms/Section/Footer";
 import SectionDetailCulture from "@/components/Organisms/Section/SectionDetailCulture";
 import SectionMap from "@/components/Organisms/Section/SectionMap";
 import SectionCulture from "@/components/Organisms/Section/SectionCulture";
@@ -18,7 +17,6 @@ export default function DetailCulturePage() {
                 <SectionCulture/>
                 <SectionCTA/>
             </div>
-            <Footer/>
         </main>
     );
 }

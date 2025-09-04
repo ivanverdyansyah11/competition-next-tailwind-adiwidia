@@ -20,7 +20,7 @@ export default function CardProvince({redirect, title, description, totalData}: 
             <ButtonCustom
                 style="button-small-secondary"
                 redirect={redirect}
-                label="Lihat Berdasarkan Provinsi"
+                label="Lihat Provinsi"
                 className="w-full"
             />
         </div>

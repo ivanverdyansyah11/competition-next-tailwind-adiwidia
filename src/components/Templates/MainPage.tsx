@@ -6,7 +6,6 @@ import SectionWhyChooseUs from "@/components/Organisms/Section/SectionWhyChooseU
 import SectionGallery from "@/components/Organisms/Section/SectionGallery";
 import SectionFAQ from "@/components/Organisms/Section/SectionFAQ";
 import SectionCTA from "@/components/Organisms/Section/SectionCTA";
-import Footer from "@/components/Organisms/Section/Footer";
 import {useLenisScroll} from "@/hooks/useLenisScroll";
 
 export default function MainPage() {
@@ -32,7 +31,6 @@ export default function MainPage() {
                 <SectionFAQ/>
                 <SectionCTA/>
             </div>
-            <Footer/>
         </main>
     );
 }

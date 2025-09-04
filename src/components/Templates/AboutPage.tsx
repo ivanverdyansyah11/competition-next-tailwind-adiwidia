@@ -3,7 +3,6 @@
 import SectionAbout from "@/components/Organisms/Section/SectionAbout";
 import SectionWhyChooseUs from "@/components/Organisms/Section/SectionWhyChooseUs";
 import SectionCTA from "@/components/Organisms/Section/SectionCTA";
-import Footer from "@/components/Organisms/Section/Footer";
 import SectionAboutHero from "@/components/Organisms/Section/SectionAboutHero";
 import SectionFactAnalyst from "@/components/Organisms/Section/SectionFactAnalyst";
 import SectionCategory from "@/components/Organisms/Section/SectionCategory";
@@ -28,7 +27,6 @@ export default function AboutPage() {
                 <SectionWhyChooseUs showFactAnalyst={false}/>
                 <SectionCTA/>
             </div>
-            <Footer/>
         </main>
     );
 }
