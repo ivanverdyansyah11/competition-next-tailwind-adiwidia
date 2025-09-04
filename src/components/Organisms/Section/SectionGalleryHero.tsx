@@ -16,6 +16,7 @@ export default function SectionGalleryHero() {
                 description="Galeri Adiwidia menghadirkan koleksi budaya Indonesia dalam bentuk visual yang menarik, interaktif, dan mudah dijelajahi untuk mengenal lebih dekat warisan bangsa."
                 buttons={[
                     {style: 'button-primary', redirect: '/collection', label: 'Lihat Koleksi 3D'},
+                    {style: 'button-blank', label: '32 Koleksi Gambar'},
                 ]}
             >
                 <>

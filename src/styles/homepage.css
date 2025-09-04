@@ -19,6 +19,7 @@
     .button-primary,
     .button-secondary,
     .button-light,
+    .button-blank,
     .button-small-primary,
     .button-small-secondary {
         @apply w-fit h-fit py-[16px] px-[24px] text-[0.875rem] text-light rounded-full bg-primary border border-transparent flex items-center justify-center gap-[8px] text-nowrap;
@@ -38,6 +39,10 @@
     .button-light {
         @apply border-transparent text-dark bg-light;
         @apply hover:contrast-75 hover:bg-light hover:text-dark hover:border-transparent;
+    }
+
+    .button-blank {
+        @apply cursor-auto border-transparent text-dark/[0.42] bg-light;
     }
 
     .button-small-primary,

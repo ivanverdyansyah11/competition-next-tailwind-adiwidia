@@ -6,11 +6,11 @@ import Description from "@/components/Atoms/Text/Description";
 import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
 import InputSearch from "@/components/Atoms/Input/InputSearch";
 
-type StyleType = "button-primary" | "button-secondary" | "button-light" | "button-small-primary" | "button-small-secondary";
+type StyleType = "button-primary" | "button-secondary" | "button-light" | "button-blank" | "button-small-primary" | "button-small-secondary";
 
 type ButtonProps = {
     style: StyleType,
-    redirect: string,
+    redirect?: string,
     label: string,
 }
 
