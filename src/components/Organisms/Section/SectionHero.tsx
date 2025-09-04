@@ -1,7 +1,10 @@
+'use client'
+
 import BadgeSubtitle from "@/components/Atoms/Badge/BadgeSubtitle";
 import Headline from "@/components/Atoms/Text/Headline";
 import Description from "@/components/Atoms/Text/Description";
 import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
+import InputSearch from "@/components/Atoms/Input/InputSearch";
 
 type StyleType = "button-primary" | "button-secondary" | "button-light" | "button-small-primary" | "button-small-secondary";
 
@@ -17,10 +20,12 @@ type Props = {
     headline: string,
     description: string,
     buttons?: ButtonProps[],
+    search?: string,
+    onSubmitAction?: ({searchValue}: {searchValue: string}) => void,
     children: React.ReactNode,
 }
 
-export default function SectionHero({icon, subtitle, headline, description, buttons, children}: Props) {
+export default function SectionHero({icon, subtitle, headline, description, buttons, search, onSubmitAction, children}: Props) {
     return (
         <section className="section-hero section-mt-gap">
             <div className="section-header gap-0">
@@ -36,7 +41,7 @@ export default function SectionHero({icon, subtitle, headline, description, butt
                 <div className="element-wrapper mb-[28px] lg:mb-[32px]">
                     <Description value={description}/>
                 </div>
-                {buttons && buttons.length > 0 && (
+                {buttons && buttons.length > 0 ? (
                     <div className="button-group element-wrapper">
                         {buttons.map((button, index) => (
                             <ButtonCustom
@@ -47,7 +52,15 @@ export default function SectionHero({icon, subtitle, headline, description, butt
                             />
                         ))}
                     </div>
-                )}
+                ) : onSubmitAction ? (
+                    <div className="element-search-wrapper">
+                        <InputSearch
+                            placeholder="Cari provinsi"
+                            value={search}
+                            onSubmitAction={(searchValue) => onSubmitAction({searchValue})}
+                        />
+                    </div>
+                ) : null}
             </div>
             {children}
         </section>
