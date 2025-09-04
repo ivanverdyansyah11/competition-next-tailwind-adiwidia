@@ -321,7 +321,7 @@
     }
 
     nav.navbar .navbar-menu {
-        @apply fixed bottom-7.5 left-1/2 -translate-x-1/2 z-5 w-fit flex justify-center border border-dark/[0.12] rounded-full items-center p-1 bg-light;
+        @apply fixed bottom-4 left-1/2 -translate-x-1/2 z-5 w-fit flex justify-center border border-dark/[0.12] rounded-full items-center p-1 bg-light;
         @apply lg:top-7.5 lg:bottom-auto;
     }
 
@@ -336,9 +336,23 @@
     /* END NAVBAR */
 
     /* TOPBAR */
+    .topbar-container {
+        @apply fixed bottom-18 left-1/2 -translate-x-1/2 z-5 flex justify-center;
+        @apply lg:bottom-auto lg:top-22;
+    }
+
     .topbar {
-        @apply fixed bottom-7.5 left-1/2 -translate-x-1/2 z-5 w-fit flex justify-center border border-dark/[0.12] rounded-full items-center p-1 bg-light;
-        @apply lg:top-7.5 lg:bottom-auto;
+        @apply w-full rounded-[20px] flex flex-wrap gap-[8px] border border-dark/[0.12] p-3 bg-light;
+        @apply md:w-[540px];
+        @apply lg:rounded-[32px] lg:top-24 lg:bottom-auto;
+    }
+
+    .topbar .topbar-link {
+        @apply py-[6px] pl-[6px] pr-[16px] rounded-full border border-dark/[0.12] text-[0.813rem] text-dark flex items-center gap-[6px];
+    }
+
+    .topbar .topbar-link .link-icon {
+        @apply w-[32px] h-[32px] aspect-square flex items-center justify-center rounded-full bg-light border border-dark/[0.12];
     }
     /* END TOPBAR */
 }
