@@ -37,10 +37,16 @@ export default function SectionWhyChooseUs({showFactAnalyst = true}: Props) {
             </div>
             <div className="section-content" id="section-banner">
                 <div className="content-banner wrapper-image">
-                    <Image src="/image/banner/banner-why-choose-us-gif.gif" alt="Banner Hero" fill className="banner-image image-full"/>
+                    {/*<Image src="/image/banner/banner-why-choose-us-gif.gif" alt="Banner Hero" fill className="banner-image image-full"/>*/}
+                    {/*<BadgeBanner*/}
+                    {/*    title="Kelingking Beach"*/}
+                    {/*    location="Nusa Penida, Bali"*/}
+                    {/*    className="bottom-[20px] left-[20px] md:!bottom-[32px] md:!left-[32px]"*/}
+                    {/*/>*/}
+                    <Image src="/image/banner/banner-why-choose-us.png" alt="Banner Hero" fill className="banner-image image-full"/>
                     <BadgeBanner
-                        title="Kelingking Beach"
-                        location="Nusa Penida, Bali"
+                        title="Gunung Bromo"
+                        location="Jawa Timur, Indonesia"
                         className="bottom-[20px] left-[20px] md:!bottom-[32px] md:!left-[32px]"
                     />
                 </div>

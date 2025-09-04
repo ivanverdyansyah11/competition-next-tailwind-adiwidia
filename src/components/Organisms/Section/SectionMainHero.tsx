@@ -18,7 +18,8 @@ export default function SectionMainHero() {
             >
                 <>
                     <div className="section-banner wrapper-image">
-                        <Image src="/image/banner/banner-hero-gif.gif" alt="Banner Hero" fill className="banner-image image-full"/>
+                        {/*<Image src="/image/banner/banner-hero-gif.gif" alt="Banner Hero" fill className="banner-image image-full"/>*/}
+                        <Image src="/image/banner/banner-hero.png" alt="Banner Hero" fill className="banner-image image-full"/>
                         <BadgeBanner
                             title="Gunung Bromo"
                             location="Jawa Timur, Indonesia"
