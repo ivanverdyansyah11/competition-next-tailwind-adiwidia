@@ -1,5 +1,10 @@
+'use client'
+
+import GalleryPage from "@/components/Templates/GalleryPage";
+import {useLenisScroll} from "@/hooks/useLenisScroll";
+
 export default function Gallery() {
-    return (
-        <p>Gallery</p>
-    );
+    useLenisScroll();
+
+    return <GalleryPage/>;
 }
