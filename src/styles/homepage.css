@@ -69,6 +69,11 @@
         @apply hover:bg-dark hover:border-transparent;
     }
 
+    .navbar-button {
+        @apply h-[48px] px-[16px] flex gap-[8px] items-center justify-center rounded-full bg-dark text-light text-[0.875rem] text-nowrap;
+        @apply hover:contrast-125;
+    }
+
     .button-copy {
         @apply hover:bg-primary;
     }
@@ -289,6 +294,53 @@
         @apply w-full p-[12px] bg-primary rounded-[8px] text-[0.813rem] text-light;
     }
     /* END CARD CHAT AI */
+
+    /* NAVBAR MINI */
+    nav.navbar-mini {
+        @apply fixed z-[1] top-0 left-0 right-0 flex items-center w-full bg-light h-[100px] border-b border-dark/[0.12];
+    }
+
+    nav.navbar-mini .mini-brand {
+        @apply w-fit inline-block;
+        @apply hover:-rotate-2 hover:scale-[102%];
+    }
+    /* END NAVBAR MINI */
+
+    /* NAVBAR */
+    nav.navbar {
+        @apply fixed z-[5] top-0 left-0 right-0 flex items-center h-[100px];
+    }
+
+    nav.navbar .container {
+        @apply flex items-center justify-between;
+    }
+
+    nav.navbar .navbar-brand {
+        @apply w-fit inline-block;
+        @apply hover:-rotate-2 hover:scale-[102%];
+    }
+
+    nav.navbar .navbar-menu {
+        @apply fixed bottom-7.5 left-1/2 -translate-x-1/2 z-5 w-fit flex justify-center border border-dark/[0.12] rounded-full items-center p-1 bg-light;
+        @apply lg:top-7.5 lg:bottom-auto;
+    }
+
+    nav.navbar .navbar-menu .menu-item {
+        @apply relative z-1 rounded-full px-4 py-2.5 bg-transparent text-[0.85rem] duration-300;
+        @apply hover:bg-dark/[0.04];
+    }
+
+    nav.navbar .navbar-menu .menu-item.active {
+        @apply bg-primary text-light;
+    }
+    /* END NAVBAR */
+
+    /* TOPBAR */
+    .topbar {
+        @apply fixed bottom-7.5 left-1/2 -translate-x-1/2 z-5 w-fit flex justify-center border border-dark/[0.12] rounded-full items-center p-1 bg-light;
+        @apply lg:top-7.5 lg:bottom-auto;
+    }
+    /* END TOPBAR */
 }
 /* END COMPONENTS */
 
@@ -803,17 +855,6 @@
         @apply lg:h-[520px] lg:rounded-[60px];
     }
     /* END SECTION MAP */
-
-    /* NAVBAR MINI */
-    nav.navbar-mini {
-        @apply fixed z-[1] top-0 left-0 right-0 flex items-center w-full bg-light h-[100px] border-b border-dark/[0.12];
-    }
-
-    nav.navbar-mini .mini-brand {
-        @apply w-fit inline-block;
-        @apply hover:-rotate-2 hover:scale-[102%];
-    }
-    /* END NAVBAR MINI */
 
     /* SECTION CHAT */
     section.section-chat {
