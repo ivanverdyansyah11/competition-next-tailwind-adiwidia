@@ -21,11 +21,12 @@ type Props = {
     description: string,
     buttons?: ButtonProps[],
     search?: string,
+    placeholder?: string,
     onSubmitAction?: ({searchValue}: {searchValue: string}) => void,
     children: React.ReactNode,
 }
 
-export default function SectionHero({icon, subtitle, headline, description, buttons, search, onSubmitAction, children}: Props) {
+export default function SectionHero({icon, subtitle, headline, description, buttons, search, placeholder, onSubmitAction, children}: Props) {
     return (
         <section className="section-hero section-mt-gap">
             <div className="section-header gap-0">
@@ -52,15 +53,15 @@ export default function SectionHero({icon, subtitle, headline, description, butt
                             />
                         ))}
                     </div>
-                ) : onSubmitAction ? (
+                ) : (
                     <div className="element-search-wrapper">
                         <InputSearch
-                            placeholder="Cari provinsi"
+                            placeholder={placeholder || "Cari sesuatu"}
                             value={search}
-                            onSubmitAction={(searchValue) => onSubmitAction({searchValue})}
+                            onSubmitAction={(searchValue) => onSubmitAction?.({searchValue})}
                         />
                     </div>
-                ) : null}
+                )}
             </div>
             {children}
         </section>

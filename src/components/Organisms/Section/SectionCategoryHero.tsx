@@ -6,19 +6,13 @@ import {useParams, usePathname} from "next/navigation";
 import {useState} from "react";
 import CardProvince from "@/components/Molecules/Card/CardProvince";
 import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
+import {convertSlug} from "@/utils/convert-slug";
 
 export default function SectionCategoryHero() {
     const pathname = usePathname();
     const { category } = useParams<{ category: string; }>();
     const [search, setSearch] = useState<string>('');
-
-    const categoryParam = category
-        ? category
-            .replace(/-/g, " ")
-            .split(" ")
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ")
-        : "";
+    const categoryParam = convertSlug({slug: category || ""});
 
     const onSubmitSearch = ({searchValue}: {searchValue: string}) => {
         setSearch(searchValue);
@@ -33,6 +27,7 @@ export default function SectionCategoryHero() {
                 headline={`Menemukan Pesona ${categoryParam} Indonesia Dalam Satu Tempat`}
                 description={`Adiwidia menghadirkan ragam ${categoryParam} Indonesia yang dikemas secara digital, interaktif, dan mudah diakses, agar budaya tetap hidup dan dikenal oleh generasi sekarang.`}
                 search={search}
+                placeholder="Cari provinsi"
                 onSubmitAction={onSubmitSearch}
             >
                 <>

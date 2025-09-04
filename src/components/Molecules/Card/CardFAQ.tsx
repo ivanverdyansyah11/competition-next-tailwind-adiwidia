@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import {bounceTransition, faqVariants} from "@/utils/motionVariant";
+import {bounceTransition, faqVariants} from "@/utils/motion-variant";
 
 type Props = {
     question: string,
