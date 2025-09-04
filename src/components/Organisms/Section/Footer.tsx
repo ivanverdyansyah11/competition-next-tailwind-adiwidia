@@ -25,14 +25,14 @@ export default function Footer() {
                     <div className="link-group">
                         <h6 className="link-title">Kategori</h6>
                         <div className="link-grid grid-cols-2 grid-rows-4">
-                            <Link href="/budaya/destinasi-budaya" className="link">Destinasi Budaya</Link>
-                            <Link href="/budaya/adat-tradisi" className="link">Adat & Tradisi</Link>
-                            <Link href="/budaya/makanan-kuliner" className="link">Makanan & Kuliner</Link>
-                            <Link href="/budaya/busana-aksesoris" className="link">Busana & Aksesoris</Link>
-                            <Link href="/budaya/seni-pertunjukan" className="link">Seni Pertunjukan</Link>
-                            <Link href="/budaya/bahasa-sastra" className="link">Bahasa & Sastra</Link>
-                            <Link href="/budaya/seni-rupa-kerajinan" className="link">Seni Rupa & Kerajinan</Link>
-                            <Link href="/budaya/arsitektur-bangunan" className="link">Arsitektur & Bangunan</Link>
+                            <Link href="/culture/destinasi-budaya" className="link">Destinasi Budaya</Link>
+                            <Link href="/culture/adat-tradisi" className="link">Adat & Tradisi</Link>
+                            <Link href="/culture/makanan-kuliner" className="link">Makanan & Kuliner</Link>
+                            <Link href="/culture/busana-aksesoris" className="link">Busana & Aksesoris</Link>
+                            <Link href="/culture/seni-pertunjukan" className="link">Seni Pertunjukan</Link>
+                            <Link href="/culture/bahasa-sastra" className="link">Bahasa & Sastra</Link>
+                            <Link href="/culture/seni-rupa-kerajinan" className="link">Seni Rupa & Kerajinan</Link>
+                            <Link href="/culture/arsitektur-bangunan" className="link">Arsitektur & Bangunan</Link>
                         </div>
                     </div>
                 </div>

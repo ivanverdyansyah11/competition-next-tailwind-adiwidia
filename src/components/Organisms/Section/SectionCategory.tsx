@@ -58,56 +58,56 @@ export default function SectionCategory() {
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/cultural-destination.png"
-                            redirect="/budaya/destinasi-budaya"
+                            redirect="/culture/destinasi-budaya"
                             title="Destinasi Budaya"
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/custom-tradition.png"
-                            redirect="/budaya/adat-tradisi"
+                            redirect="/culture/adat-tradisi"
                             title="Adat & Tradisi"
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/food-cuisine.png"
-                            redirect="/budaya/makanan-kuliner"
+                            redirect="/culture/makanan-kuliner"
                             title="Makanan & Kuliner"
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/fashion-accessories.png"
-                            redirect="/budaya/busana-aksesoris"
+                            redirect="/culture/busana-aksesoris"
                             title="Busana & Aksesoris"
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/performing-art.png"
-                            redirect="/budaya/seni-pertunjukan"
+                            redirect="/culture/seni-pertunjukan"
                             title="Seni Pertunjukan"
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/language-literature.png"
-                            redirect="/budaya/bahasa-sastra"
+                            redirect="/culture/bahasa-sastra"
                             title="Bahasa & Sastra"
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/fine-art-craft.png"
-                            redirect="/budaya/seni-rupa-kerajinan"
+                            redirect="/culture/seni-rupa-kerajinan"
                             title="Seni Rupa & Kerajinan"
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <CardCategory
                             image="/image/category/architecture-building.png"
-                            redirect="/budaya/arsitektur-bangunan"
+                            redirect="/culture/arsitektur-bangunan"
                             title="Arsitektur & Bangunan"
                         />
                     </SwiperSlide>

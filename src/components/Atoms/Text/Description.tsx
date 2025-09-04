@@ -8,8 +8,6 @@ type Props = {
 
 export default function Description({value, className, size = "normal"}: Props) {
     return (
-        <p className={`description ${className} ${size}`}>
-            {value}
-        </p>
+        <p className={`description ${className} ${size}`} dangerouslySetInnerHTML={{ __html: value }}/>
     )
 }

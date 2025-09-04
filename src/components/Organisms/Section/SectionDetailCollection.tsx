@@ -9,17 +9,12 @@ import CardChatAI from "@/components/Molecules/Card/CardChatAI";
 import Image from "next/image";
 import {useState} from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import {menuTabVariants} from "@/utils/motion-variant";
 
 export default function SectionDetailCollection() {
-    const { slug } = useParams<{ slug: string; }>();
-    const slugParam = convertSlug({slug: slug || ""});
+    const { collection_slug } = useParams<{ collection_slug: string; }>();
+    const slugParam = convertSlug({slug: collection_slug || ""});
     const [tabActive, setTabActive] = useState<string>('description');
-
-    const variants = {
-        hidden: { opacity: 0, y: 10 },
-        visible: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: -10 },
-    };
 
     return (
         <section className="section-detail-collection section-content-gap section-top-hero">
@@ -55,8 +50,8 @@ export default function SectionDetailCollection() {
                                     initial="hidden"
                                     animate="visible"
                                     exit="exit"
-                                    variants={variants}
-                                    transition={{ duration: 0.3 }}
+                                    variants={menuTabVariants}
+                                    transition={{ duration: 0.2 }}
                                     className="body-group"
                                     id="description"
                                 >
@@ -79,14 +74,14 @@ export default function SectionDetailCollection() {
                                     initial="hidden"
                                     animate="visible"
                                     exit="exit"
-                                    variants={variants}
-                                    transition={{ duration: 0.3 }}
+                                    variants={menuTabVariants}
+                                    transition={{ duration: 0.2 }}
                                     className="body-group"
                                     id="culture-story"
                                 >
                                     <div className="body-header">
                                         <div className="header-icon">
-                                            <Image src="/image/icon/file/file-light.svg" alt="Definition Icon" width={14} height={14}/>
+                                            <Image src="/image/icon/open-book/open-book-light.svg" alt="Definition Icon" width={14} height={14}/>
                                         </div>
                                         <p className="header-title">Cerita Budaya</p>
                                     </div>

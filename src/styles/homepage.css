@@ -160,6 +160,14 @@
     .fact-analyst .analyst-caption {
         @apply text-[0.813rem] text-dark/[0.62];
     }
+
+    .breadcrumb {
+        @apply text-[0.875rem] text-dark/[0.42];
+    }
+
+    .breadcrumb span {
+        @apply text-primary;
+    }
     /* END TEXT */
 
     /* OTHER */
@@ -239,7 +247,7 @@
 
     /* CARD CHAT AI */
     .card-chat {
-        @apply flex flex-col rounded-[16px] border border-dark/[0.12] overflow-hidden;
+        @apply h-fit flex flex-col rounded-[16px] border border-dark/[0.12] overflow-hidden;
         @apply lg:rounded-[20px];
     }
 
@@ -678,11 +686,11 @@
     }
 
     section.section-detail-collection .detail-collection-content .content-card .card-menu {
-        @apply w-full flex border-b border-dark/[0.12];
+        @apply w-full flex border-b border-dark/[0.12] overflow-x-auto;
     }
 
     section.section-detail-collection .detail-collection-content .content-card .card-menu .menu-tab {
-        @apply p-[12px] pt-0 border-b border-transparent text-[0.875rem] text-dark/[0.62];
+        @apply p-[12px] pt-0 border-b border-transparent text-[0.875rem] text-dark/[0.62] text-nowrap;
         @apply hover:border-primary hover:text-primary;
     }
 
@@ -714,6 +722,87 @@
         @apply flex flex-col gap-[8px];
     }
     /* END SECTION DETAIL COLLECTION */
+
+    /* SECTION DETAIL CULTURE */
+    section.section-detail-culture .detail-culture-header {
+        @apply w-full flex items-end justify-between gap-[12px];
+    }
+
+    section.section-detail-culture .detail-culture-header .header-data {
+        @apply w-full flex flex-col;
+    }
+
+    section.section-detail-culture .detail-culture-image {
+        @apply relative w-full aspect-square rounded-[32px] overflow-hidden;
+        @apply md:h-[440px] md:p-[32px] md:rounded-[40px];
+        @apply lg:h-[520px] lg:p-[40px] lg:rounded-[60px];
+    }
+
+    section.section-detail-culture .detail-culture-content {
+        @apply w-full grid grid-cols-1 gap-[44px];
+        @apply lg:grid-cols-[1fr_400px] lg:gap-[40px];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card {
+        @apply w-full h-fit flex flex-col p-[16px] rounded-[16px] border border-dark/[0.12];
+        @apply lg:p-[20px] lg:rounded-[20px];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-menu {
+        @apply w-full flex border-b border-dark/[0.12] overflow-x-auto;
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-menu .menu-tab {
+        @apply p-[12px] pt-0 border-b border-transparent text-[0.875rem] text-dark/[0.62] text-nowrap;
+        @apply hover:border-primary hover:text-primary;
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-menu .menu-tab.active {
+        @apply border-primary text-primary;
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body {
+        @apply flex flex-col gap-[24px] pt-[24px];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body .body-group {
+        @apply flex flex-col gap-[12px];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body .body-header {
+        @apply flex items-center gap-[8px];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body .body-header .header-icon {
+        @apply w-[32px] h-[32px] aspect-square rounded-[8px] bg-primary flex items-center justify-center;
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body .body-header .header-title {
+        @apply text-[1rem];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body .body-content {
+        @apply flex flex-col gap-[8px];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body .body-content * {
+        @apply text-[0.875rem] text-dark/[0.62];
+    }
+
+    section.section-detail-culture .detail-culture-content .content-card .card-body .body-content .content-video {
+        @apply w-full aspect-square rounded-[24px] overflow-hidden;
+        @apply md:aspect-[16/10];
+        @apply lg:rounded-[32px];
+    }
+    /* END SECTION DETAIL CULTURE */
+
+    /* SECTION MAP */
+    section.section-map .map-content {
+        @apply  w-full aspect-square rounded-[32px] overflow-hidden;
+        @apply md:h-[440px] md:rounded-[40px];
+        @apply lg:h-[520px] lg:rounded-[60px];
+    }
+    /* END SECTION MAP */
 
     /* SECTION CTA */
     section.section-cta {
