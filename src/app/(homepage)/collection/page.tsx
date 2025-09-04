@@ -1,5 +1,10 @@
+'use client'
+
+import CollectionPage from "@/components/Templates/CollectionPage";
+import {useLenisScroll} from "@/hooks/useLenisScroll";
+
 export default function Collection() {
-    return (
-        <p>Collection</p>
-    );
+    useLenisScroll();
+
+    return <CollectionPage/>;
 }

@@ -28,7 +28,7 @@ type Props = {
 
 export default function SectionHero({icon, subtitle, headline, description, buttons, search, placeholder, onSubmitAction, children}: Props) {
     return (
-        <section className="section-hero section-mt-gap">
+        <section className="section-hero section-top-hero">
             <div className="section-header gap-0">
                 <div className="element-wrapper mb-[12px] lg:mb-[16px]">
                     <BadgeSubtitle
