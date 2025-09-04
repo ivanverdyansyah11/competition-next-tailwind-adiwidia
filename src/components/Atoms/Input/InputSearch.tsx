@@ -1,16 +1,18 @@
 import ButtonSubmit from "@/components/Atoms/Button/ButtonSubmit";
 import {useState} from "react";
 
-type ButtonSize = "small" | "normal";
+type InputSize = "small" | "normal";
+type IconType = "search" | "submit";
 
 type Props = {
     value?: string;
     placeholder: string;
-    buttonSize?: ButtonSize;
+    inputSize?: InputSize;
     onSubmitAction: (search: string) => void;
+    icon?: IconType,
 }
 
-export default function InputSearch({value = "", placeholder, buttonSize = "normal", onSubmitAction}: Props) {
+export default function InputSearch({value = "", placeholder, inputSize = "normal", onSubmitAction, icon = "search"}: Props) {
     const [inputValue, setInputValue] = useState<string>(value);
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -19,7 +21,7 @@ export default function InputSearch({value = "", placeholder, buttonSize = "norm
     };
 
     return (
-        <form className={`form-input ${buttonSize}`} onSubmit={handleSubmit}>
+        <form className={`form-input ${inputSize}`} onSubmit={handleSubmit}>
             <input
                 type="text"
                 className="input"
@@ -28,7 +30,7 @@ export default function InputSearch({value = "", placeholder, buttonSize = "norm
                 onChange={(e) => setInputValue(e.target.value)}
             />
             <div className="input-submit">
-                <ButtonSubmit/>
+                <ButtonSubmit icon={icon}/>
             </div>
         </form>
     );
