@@ -9,16 +9,18 @@ type Props = {
     label: string,
     buttonType?: ButtonType,
     className?: string,
+    onClick?: () => void,
+    disabled?: boolean
 }
 
-export default function ButtonCustom({style, redirect, label, buttonType = "button", className}: Props) {
+export default function ButtonCustom({style, redirect, label, buttonType = "button", className, onClick, disabled}: Props) {
     return (
         redirect ? (
             <Link href={redirect} className={`${style} ${className}`}>
                 {label}
             </Link>
         ) : (
-            <button type={buttonType} className={`${style} ${className}`}>
+            <button type={buttonType} className={`${style} ${className}`} onClick={onClick} disabled={disabled}>
                 {label}
             </button>
         )

@@ -352,7 +352,11 @@
     }
 
     .topbar .topbar-link .link-icon {
-        @apply w-[32px] h-[32px] aspect-square flex items-center justify-center rounded-full bg-light border border-dark/[0.12];
+        @apply w-[32px] text-primary h-[32px] aspect-square flex items-center justify-center rounded-full bg-light border border-dark/[0.12];
+    }
+
+    .topbar .topbar-link:hover .link-icon {
+        @apply text-white
     }
     /* END TOPBAR */
 }
@@ -697,7 +701,7 @@
     }
 
     section.section-culture .section-content .card-culture .culture-location {
-        @apply flex items-center gap-[6px] text-[0.813rem] text-dark/[0.62];
+        @apply flex items-center gap-[6px]  text-[0.813rem] text-dark/[0.62];
     }
     /* END SECTION CULTURE */
 

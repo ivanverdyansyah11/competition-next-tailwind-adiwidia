@@ -1,7 +1,58 @@
+'use client';
+
+import { useParams } from 'next/navigation';
+import { useEffect, useState, useCallback } from 'react';
+import { supabase } from '@/utils/supabase';
+
+type CultureRow = {
+  slug: string;
+  maps_url?: string | null;
+};
+
 export default function SectionMap() {
-    return (
-        <section className="section-map section-mt-gap">
-            <iframe className="map-content" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.586484210675!2d115.22925327456775!3d-8.635635987798329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23f0d3f3e95ef%3A0x7f02aaf2fb5e1121!2sLiving%20World%20Denpasar!5e0!3m2!1sid!2sid!4v1756966498942!5m2!1sid!2sid" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-        </section>
-    )
+  const { category, culture_slug } = useParams<{
+    category: string;
+    province: string;
+    culture_slug: string;
+  }>();
+
+  if (category !== 'destinasi-budaya') return null;
+
+  const [embedSrc, setEmbedSrc] = useState<string | null>(null);
+
+  const fetchMap = useCallback(async () => {
+    const { data, error } = await supabase
+      .from('view_cultures_with_category_province')
+      .select('maps_url')
+      .eq('slug', culture_slug)
+      .single();
+
+    if (error || !data) {
+      setEmbedSrc(null);
+      return;
+    }
+
+    const row = data as CultureRow;
+
+    let src = row.maps_url
+
+    setEmbedSrc(src || null);
+  }, [culture_slug]);
+
+  useEffect(() => {
+    fetchMap();
+  }, [fetchMap]);
+
+  if (!embedSrc) return null;
+
+  return (
+    <section className="section-map section-mt-gap">
+      <iframe
+        className="map-content"
+        src={embedSrc}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </section>
+  );
 }

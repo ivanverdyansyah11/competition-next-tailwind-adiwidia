@@ -13,7 +13,7 @@ export default function DetailCulturePage() {
         <main className="main">
             <div className="container section-pb-gap">
                 <SectionDetailCulture/>
-                <SectionMap/>
+                <SectionMap />
                 <SectionCulture/>
                 <SectionCTA/>
             </div>

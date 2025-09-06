@@ -15,7 +15,7 @@ export default function CardProvince({redirect, title, description, totalData}: 
             <p className="province-description">{description}</p>
             <p className="province-total">
                 <Image src="/image/icon/mountain/mountain-dark.svg" alt="Mountain Icon" width={12} height={12} className="total-icon"/>
-                {totalData} Destinasi
+                {totalData} Data
             </p>
             <ButtonCustom
                 style="button-small-secondary"

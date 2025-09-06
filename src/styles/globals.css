@@ -56,7 +56,7 @@
 /* BASE */
 @layer base {
     * {
-        @apply text-dark font-default-medium duration-300;
+        @apply font-default-medium duration-300;
         transition-property: color, background-color, background-image, border-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, box-shadow, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
     }
 
