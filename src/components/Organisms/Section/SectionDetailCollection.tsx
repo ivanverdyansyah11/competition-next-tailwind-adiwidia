@@ -1,102 +1,137 @@
-'use client'
+'use client';
 
-import Title from "@/components/Atoms/Text/Title";
-import Description from "@/components/Atoms/Text/Description";
-import {useParams} from "next/navigation";
-import {convertSlug} from "@/utils/convert-slug";
-import ButtonCopy from "@/components/Atoms/Button/ButtonCopy";
-import CardChatAI from "@/components/Molecules/Card/CardChatAI";
-import Image from "next/image";
-import {useState} from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import {menuTabVariants} from "@/utils/motion-variant";
+import Title from '@/components/Atoms/Text/Title';
+import Description from '@/components/Atoms/Text/Description';
+import { useParams } from 'next/navigation';
+import { convertSlug } from '@/utils/convert-slug';
+import ButtonCopy from '@/components/Atoms/Button/ButtonCopy';
+import CardChatAI from '@/components/Molecules/Card/CardChatAI';
+import Image from 'next/image';
+import { useState, useEffect, useCallback } from 'react';
+import { supabase } from '@/utils/supabase';
+import { SketchfabEmbed } from './3dViewer';
+
+type ItemRow = {
+  id?: string | number | null;
+  slug: string;
+  name?: string | null;
+
+  // HTML text
+  content?: string | null;
+
+  // Sketchfab sources
+  media_3d_url?: string | null;
+};
+
 
 export default function SectionDetailCollection() {
-    const { collection_slug } = useParams<{ collection_slug: string; }>();
-    const slugParam = convertSlug({slug: collection_slug || ""});
-    const [tabActive, setTabActive] = useState<string>('description');
+  const { collection_slug } = useParams<{ collection_slug: string }>();
+  const slugParam = convertSlug({ slug: collection_slug || '' });
 
-    return (
-        <section className="section-detail-collection section-content-gap section-top-hero">
-            <div className="detail-collection-header">
-                <div className="header-data">
-                    <div className="element-wrapper mb-[6px] lg:mb-[8px]">
-                        <Title className="data-title" label={slugParam}/>
-                    </div>
-                    <div className="element-wrapper">
-                        <Description value="Putar objek 360° dengan mouse atau sentuhan"/>
-                    </div>
-                </div>
-                <ButtonCopy/>
-            </div>
-            <div className="detail-collection-frame">
-                <p className="frame-caption">Asset 3D disini</p>
-            </div>
-            <div className="detail-collection-content">
-                <div className="content-card">
-                    <div className="card-menu">
-                        <button type="button" className={`menu-tab ${tabActive === "description" ? "active" : ""}`} onClick={() => setTabActive("description")}>
-                            Deskripsi
-                        </button>
-                        <button type="button" className={`menu-tab ${tabActive === "culture-story" ? "active" : ""}`} onClick={() => setTabActive("culture-story")}>
-                            Cerita Budaya
-                        </button>
-                    </div>
-                    <div className="card-body overflow-hidden relative">
-                        <AnimatePresence mode="wait">
-                            {tabActive === "description" && (
-                                <motion.div
-                                    key="description"
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="exit"
-                                    variants={menuTabVariants}
-                                    transition={{ duration: 0.2 }}
-                                    className="body-group"
-                                    id="description"
-                                >
-                                    <div className="body-header">
-                                        <div className="header-icon">
-                                            <Image src="/image/icon/file/file-light.svg" alt="Definition Icon" width={14} height={14}/>
-                                        </div>
-                                        <p className="header-title">Pengalaman Warga Tengger</p>
-                                    </div>
-                                    <div className="body-content">
-                                        <Description value="Gunung Bromo bukan hanya pemandangan alam yang menakjubkan, tetapi juga pusat kehidupan budaya suku Tengger. Setiap tahun, warga setempat menggelar ritual Kasada sebagai bentuk penghormatan kepada leluhur dan Dewa Gunung, mempersembahkan sesajen di kawah Bromo. Tradisi ini menjadi bagian penting dari identitas masyarakat dan memupuk rasa kebersamaan serta cinta terhadap alam sekitar."/>
-                                        <Description value="Bagi wisatawan, Gunung Bromo menawarkan pengalaman yang tak terlupakan, mulai dari menyaksikan matahari terbit di lautan pasir hingga menjelajahi lembah dan bukit sekitarnya. Keindahan alam berpadu dengan nilai budaya lokal membuat setiap kunjungan menjadi momen edukatif sekaligus spiritual. Banyak pengunjung merasa terinspirasi oleh harmoni antara alam dan tradisi yang tetap terjaga hingga kini."/>
-                                    </div>
-                                </motion.div>
-                            )}
+  const [data, setData] = useState<ItemRow | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [errorMsg, setErrorMsg] = useState<string>('');
 
-                            {tabActive === "culture-story" && (
-                                <motion.div
-                                    key="culture-story"
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="exit"
-                                    variants={menuTabVariants}
-                                    transition={{ duration: 0.2 }}
-                                    className="body-group"
-                                    id="culture-story"
-                                >
-                                    <div className="body-header">
-                                        <div className="header-icon">
-                                            <Image src="/image/icon/open-book/open-book-light.svg" alt="Definition Icon" width={14} height={14}/>
-                                        </div>
-                                        <p className="header-title">Cerita Budaya</p>
-                                    </div>
-                                    <div className="body-content">
-                                        <Description value="Bagi wisatawan, Gunung Bromo menawarkan pengalaman yang tak terlupakan, mulai dari menyaksikan matahari terbit di lautan pasir hingga menjelajahi lembah dan bukit sekitarnya. Keindahan alam berpadu dengan nilai budaya lokal membuat setiap kunjungan menjadi momen edukatif sekaligus spiritual. Banyak pengunjung merasa terinspirasi oleh harmoni antara alam dan tradisi yang tetap terjaga hingga kini."/>
-                                        <Description value="Gunung Bromo bukan hanya pemandangan alam yang menakjubkan, tetapi juga pusat kehidupan budaya suku Tengger. Setiap tahun, warga setempat menggelar ritual Kasada sebagai bentuk penghormatan kepada leluhur dan Dewa Gunung, mempersembahkan sesajen di kawah Bromo. Tradisi ini menjadi bagian penting dari identitas masyarakat dan memupuk rasa kebersamaan serta cinta terhadap alam sekitar."/>
-                                        <Description value="Bagi wisatawan, Gunung Bromo menawarkan pengalaman yang tak terlupakan, mulai dari menyaksikan matahari terbit di lautan pasir hingga menjelajahi lembah dan bukit sekitarnya. Keindahan alam berpadu dengan nilai budaya lokal membuat setiap kunjungan menjadi momen edukatif sekaligus spiritual. Banyak pengunjung merasa terinspirasi oleh harmoni antara alam dan tradisi yang tetap terjaga hingga kini."/>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
+  const fetchItem = useCallback(async () => {
+    try {
+      setLoading(true);
+      setErrorMsg('');
+
+      const { data, error } = await supabase
+        .from('virtual_museum_items')
+        .select('*' )
+        .eq('slug', collection_slug)
+        .single();
+
+      if (error) throw error;
+      setData(data as ItemRow);
+    } catch (err: any) {
+      setErrorMsg(err?.message ?? 'Gagal memuat koleksi.');
+      setData(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [collection_slug]);
+
+  useEffect(() => {
+    fetchItem();
+  }, [fetchItem]);
+
+  const titleText = data?.name || slugParam;
+  const descriptionHTML = (data?.content || '') as string;
+
+  const modelId =
+    data?.media_3d_url?.trim() ||
+    null;
+
+  return (
+    <section className="section-detail-collection section-content-gap section-top-hero">
+      <div className="detail-collection-header">
+        <div className="header-data">
+          <div className="element-wrapper mb-[6px] lg:mb-[8px]">
+            <Title className="data-title" label={titleText} />
+          </div>
+          <div className="element-wrapper">
+            <Description value="Putar objek 360° dengan mouse atau sentuhan" />
+          </div>
+        </div>
+        <ButtonCopy />
+      </div>
+
+      <div className="detail-collection-frame">
+        {loading ? (
+          <div className="w-full h-[360px] md:h-[460px] rounded-xl bg-gray-100 animate-pulse" />
+        ) : modelId ? (
+          <SketchfabEmbed modelId={modelId} className="h-[360px] md:h-[460px]" />
+        ) : (
+          <p className="frame-caption text-gray-500">Asset 3D belum tersedia</p>
+        )}
+      </div>
+
+      <div className="detail-collection-content">
+        <div className="content-card">
+          <div className="card-body">
+            <div className="body-group" id="description">
+              <div className="body-header">
+                <div className="header-icon">
+                  <Image
+                    src="/image/icon/file/file-light.svg"
+                    alt="Definition Icon"
+                    width={14}
+                    height={14}
+                  />
                 </div>
-                <CardChatAI/>
+                <p className="header-title">Deskripsi</p>
+              </div>
+
+              {/* Error */}
+              {errorMsg && (
+                <div className="text-sm text-red-600 mt-2">{errorMsg}</div>
+              )}
+
+              <div className="body-content">
+                {loading ? (
+                  <>
+                    <div className="h-4 w-3/4 bg-gray-100 rounded mb-2 animate-pulse" />
+                    <div className="h-4 w-2/3 bg-gray-100 rounded mb-2 animate-pulse" />
+                    <div className="h-4 w-1/2 bg-gray-100 rounded mb-2 animate-pulse" />
+                  </>
+                ) : descriptionHTML ? (
+                  // <Description /> kamu sudah support HTML string
+                  <Description value={descriptionHTML} />
+                  // Jika tidak, gunakan:
+                  // <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: descriptionHTML }} />
+                ) : (
+                  <p className="text-sm text-gray-500">Deskripsi belum tersedia.</p>
+                )}
+              </div>
             </div>
-        </section>
-    )
+          </div>
+        </div>
+
+        {/* Tetap tampilkan Chat AI di sisi kanan */}
+        <CardChatAI />
+      </div>
+    </section>
+  );
 }

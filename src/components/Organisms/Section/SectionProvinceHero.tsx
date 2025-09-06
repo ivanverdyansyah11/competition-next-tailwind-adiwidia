@@ -13,8 +13,8 @@ import { supabase } from '@/utils/supabase';
 type CultureRow = {
   id: string | number;
   slug: string;
-  name?: string | null;      // atau 'title'
-  title?: string | null;     // fallback
+  name?: string | null;
+  title?: string | null;   
   location?: string | null;
   image_url?: string | null;
   category_slug?: string;
@@ -90,21 +90,17 @@ export default function SectionProvinceHero() {
     [category, province, page, pageSize, search]
   );
 
-  // Initial & refetch ketika route params berubah
   useEffect(() => {
     setItems([]);
     setTotal(0);
     setPage(1);
     fetchCultures({ reset: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, province]);
 
-  // Load additional page
   useEffect(() => {
     if (page > 1) fetchCultures();
   }, [page, fetchCultures]);
 
-  // Submit search: set state + refetch dengan keyword baru (hindari stale)
   const onSubmitSearch = ({ searchValue }: { searchValue: string }) => {
     setSearch(searchValue);
     setItems([]);
@@ -144,7 +140,6 @@ export default function SectionProvinceHero() {
               />
             ))}
 
-            {/* skeleton saat first load */}
             {loading && items.length === 0 && (
               <>
                 {[...Array(6)].map((_, i) => (
