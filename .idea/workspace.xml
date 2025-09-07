@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8bb7203b-ec2e-4179-9322-acb482ef55fb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/components/Organisms/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Organisms/Navbar.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="tsconfig.json" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="31oOBfgtSNuRIAopgVn6THI3o8Y" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/2025/September/portfolio-next-tailwind-adiwidia/src/app",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Admin\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\app" />
+      <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\app\(homepage)\chat" />
+      <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\components\Templates" />
+      <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\components\Organisms\Section" />
+      <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\components\Atoms\ParticleChatAI" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\app\(chat)" />
+      <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\components\Organisms\Section" />
+      <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\app\(homepage)\budaya" />
+      <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\components\Organisms\Section\Main" />
+      <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\components\Molecules\Section" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.25659.40" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8bb7203b-ec2e-4179-9322-acb482ef55fb" name="Changes" comment="" />
+      <created>1756186827699</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756186827699</updated>
+      <workItem from="1756186829407" duration="7999000" />
+      <workItem from="1756197205412" duration="42105000" />
+      <workItem from="1756258934236" duration="4634000" />
+      <workItem from="1756275338048" duration="9586000" />
+      <workItem from="1756334787265" duration="4000" />
+      <workItem from="1756867062182" duration="10564000" />
+      <workItem from="1756887278750" duration="58006000" />
+      <workItem from="1756962366204" duration="114000" />
+      <workItem from="1756962520843" duration="34000" />
+      <workItem from="1756962608354" duration="4647000" />
+      <workItem from="1756971505939" duration="6783000" />
+      <workItem from="1756980526433" duration="7824000" />
+      <workItem from="1756998972589" duration="5000" />
+      <workItem from="1757027178784" duration="3740000" />
+      <workItem from="1757049380695" duration="1863000" />
+      <workItem from="1757084569444" duration="1403000" />
+      <workItem from="1757201561348" duration="5860000" />
+      <workItem from="1757251928267" duration="759000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
