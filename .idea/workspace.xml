@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bb7203b-ec2e-4179-9322-acb482ef55fb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Organisms/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Organisms/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/chat/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/chat/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Atoms/Input/InputSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Atoms/Input/InputSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Molecules/Card/CardChatAI.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Molecules/Card/CardChatAI.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +48,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Admin\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "D:\\2025\\September\\portfolio-next-tailwind-adiwidia\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -99,6 +101,7 @@
       <workItem from="1757084569444" duration="1403000" />
       <workItem from="1757201561348" duration="5860000" />
       <workItem from="1757251928267" duration="759000" />
+      <workItem from="1757252708419" duration="304000" />
     </task>
     <servers />
   </component>
