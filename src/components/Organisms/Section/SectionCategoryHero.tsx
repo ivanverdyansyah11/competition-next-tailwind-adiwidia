@@ -1,7 +1,7 @@
 'use client';
 
 import 'swiper/css';
-import { useEffect, useMemo, useState, useCallback } from 'react';
+import { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 
 import SectionHero from '@/components/Organisms/Section/SectionHero';
@@ -11,15 +11,14 @@ import { convertSlug } from '@/utils/convert-slug';
 import { supabase } from '@/utils/supabase';
 
 type Row = {
-  // sesuaikan dengan kolom di view kamu
   id?: string | number | null;
   category_slug: string;
   province_slug: string;
-  province_name?: string | null;   // ← biasanya ada
-  name?: string | null;            // fallback bila pakai 'name'
-  description?: string | null;     // opsional
-  total_cultures?: number | null;  // ← counter di view
-  total_characters?: number | null; // fallback jika kamu pakai nama ini
+  province_name?: string | null;
+  name?: string | null;
+  province_description?: string | null;
+  total_cultures?: number | null;
+  total_characters?: number | null;
 };
 
 export default function SectionCategoryHero() {
@@ -40,12 +39,15 @@ export default function SectionCategoryHero() {
   const [errorMsg, setErrorMsg] = useState<string>('');
 
   const hasMore = items.length < total;
+  const prevSearchRef = useRef<string>('');
 
-  // helpers untuk handle perbedaan nama kolom
-  const getProvinceTitle = (row: Row) => {console.log(row); return row.province_name || row.name || ''};
-  const getProvinceDesc  = (row: Row) => row.description || '';
-  const getTotalCount    = (row: Row) =>
-    (row.total_cultures ?? row.total_characters ?? 0);
+  const getProvinceTitle = (row: Row) => row.province_name || row.name || '';
+  const getProvinceDesc = (row: Row) => row.province_description || '';
+  const getTotalCount = (row: Row) =>
+    row.total_cultures ?? row.total_characters ?? 0;
+
+  // Escape % dan _ untuk ILIKE
+  const escapeIlike = (kw: string) => kw.replace(/[%_]/g, '\\$&');
 
   const fetchProvinces = useCallback(
     async (opts?: { reset?: boolean; keyword?: string }) => {
@@ -57,24 +59,26 @@ export default function SectionCategoryHero() {
         const from = (currentPage - 1) * pageSize;
         const to = from + pageSize - 1;
 
-        const kw = (opts?.keyword ?? search).trim();
+        const rawKw = (opts?.keyword ?? search).trim();
+        const escKw = escapeIlike(rawKw);
 
-        let query = supabase
+        // Base select + filter kategori
+        let base = supabase
           .from('view_culture_counts_by_category_province')
           .select('*', { count: 'exact' })
-          .eq('category_slug', category) // filter by category-slug
-          // urutkan berdasarkan nama provinsi (pakai kolom yang ada)
-          .order('province_name', { ascending: true, nullsFirst: false })
-          .range(from, to);
+          .eq('category_slug', category);
 
-        // Search di nama provinsi (dan fallback name)
-        if (kw) {
-          query = query.or(
-            `province_name.ilike.%${kw}%,name.ilike.%${kw}%`
+        // Search lebih dulu sebelum order/range
+        if (escKw) {
+          base = base.or(
+            `province_name.ilike.%${escKw}%`
           );
         }
 
-        const { data, error, count } = await query;
+        const { data, error, count } = await base
+          .order('province_name', { ascending: true, nullsFirst: false })
+          .range(from, to);
+
         if (error) throw error;
 
         setTotal(count ?? 0);
@@ -82,7 +86,7 @@ export default function SectionCategoryHero() {
           setItems(data ?? []);
           setPage(1);
         } else {
-          setItems(prev => [...prev, ...(data ?? [])]);
+          setItems((prev) => [...prev, ...(data ?? [])]);
         }
       } catch (err: any) {
         setErrorMsg(err?.message ?? 'Failed to load provinces.');
@@ -93,29 +97,44 @@ export default function SectionCategoryHero() {
     [category, page, pageSize, search]
   );
 
+  // Refetch saat kategori berubah (reset penuh)
   useEffect(() => {
-    // refetch ketika category berubah
+    setSearch('');
     setItems([]);
     setTotal(0);
     setPage(1);
-    fetchProvinces({ reset: true });
+    fetchProvinces({ reset: true, keyword: '' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
+  // Load halaman berikutnya
   useEffect(() => {
     if (page > 1) fetchProvinces();
   }, [page, fetchProvinces]);
 
+  // Auto reset saat input dikosongkan (tanpa submit)
+  useEffect(() => {
+    const prev = prevSearchRef.current;
+    if (prev !== '' && search === '' && !loading) {
+      setItems([]);
+      setTotal(0);
+      setPage(1);
+      fetchProvinces({ reset: true, keyword: '' });
+    }
+    prevSearchRef.current = search;
+  }, [search, loading, fetchProvinces]);
+
   const onSubmitSearch = ({ searchValue }: { searchValue: string }) => {
-    setSearch(searchValue);
+    const kw = searchValue.trim();
+    setSearch(kw);
     setItems([]);
     setTotal(0);
     setPage(1);
-    fetchProvinces({ reset: true, keyword: searchValue }); // anti-stale keyword
+    fetchProvinces({ reset: true, keyword: kw }); // anti-stale
   };
 
   const onLoadMore = () => {
-    if (!loading && hasMore) setPage(p => p + 1);
+    if (!loading && hasMore) setPage((p) => p + 1);
   };
 
   return (
@@ -124,9 +143,13 @@ export default function SectionCategoryHero() {
       subtitle="Jelajahi Kekayaan Budaya Nusantara"
       headline={`Menemukan Pesona ${categoryParam} Indonesia Dalam Satu Tempat`}
       description={`Adiwidia menghadirkan ragam ${categoryParam} Indonesia yang dikemas secara digital, interaktif, dan mudah diakses, agar budaya tetap hidup dan dikenal oleh generasi sekarang.`}
+      // Controlled: penting untuk InputSearch terbaru
       search={search}
-      placeholder="Cari provinsi"
+      onChangeSearch={setSearch}
       onSubmitAction={onSubmitSearch}
+      placeholder="Cari provinsi"
+      searchIcon="search"
+      searchDisabled={loading}
     >
       <>
         <section className="section-province section-content-gap">
@@ -164,8 +187,8 @@ export default function SectionCategoryHero() {
                 loading && items.length > 0
                   ? 'Memuat...'
                   : hasMore
-                    ? 'Lebih Banyak Provinsi'
-                    : 'Semua provinsi sudah ditampilkan'
+                  ? 'Lebih Banyak Provinsi'
+                  : 'Semua provinsi sudah ditampilkan'
               }
               onClick={onLoadMore}
               disabled={!hasMore || loading}

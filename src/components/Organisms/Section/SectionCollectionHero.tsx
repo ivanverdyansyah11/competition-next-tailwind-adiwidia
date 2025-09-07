@@ -5,30 +5,39 @@ import SectionHero from '@/components/Organisms/Section/SectionHero';
 import ButtonCustom from '@/components/Atoms/Button/ButtonCustom';
 import CardCollection from '@/components/Molecules/Card/CardCollection';
 import { supabase } from '@/utils/supabase';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type ItemRow = {
   id?: string | number | null;
   slug: string;
-  title?: string | null;        // kolom umum
-  name?: string | null;         // fallback
+  title?: string | null;
+  name?: string | null;
   description?: string | null;
-  // tambahkan field lain kalau ada (e.g., image_url, tags, etc.)
 };
+
+const PAGE_SIZE = 12;
+// Pakai kedua kemungkinan nama tabel
+const TABLE_CANDIDATES = ['virtual_museum_items'] as const;
+// Coba order by title → fallback name
+const ORDER_COLUMNS = [ 'name'] as const;
 
 export default function SectionCollectionHero() {
   const [search, setSearch] = useState<string>('');
   const [items, setItems] = useState<ItemRow[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [pageSize] = useState<number>(12);
   const [total, setTotal] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
+  const [activeTable, setActiveTable] = useState<(typeof TABLE_CANDIDATES)[number] | null>(null);
 
   const hasMore = items.length < total;
 
+  const prevSearchRef = useRef<string>(''); // untuk deteksi clear
+
   const getTitle = (row: ItemRow) => row.title || row.name || '';
   const getDesc = (row: ItemRow) => row.description || '';
+
+  const escapeIlike = (kw: string) => kw.replace(/[%_]/g, '\\$&');
 
   const fetchItems = useCallback(
     async (opts?: { reset?: boolean; keyword?: string }) => {
@@ -37,68 +46,112 @@ export default function SectionCollectionHero() {
         setErrorMsg('');
 
         const currentPage = opts?.reset ? 1 : page;
-        const from = (currentPage - 1) * pageSize;
-        const to = from + pageSize - 1;
+        const from = (currentPage - 1) * PAGE_SIZE;
+        const to = from + PAGE_SIZE - 1;
 
-        const kw = (opts?.keyword ?? search).trim();
+        const rawKw = (opts?.keyword ?? search).trim();
+        const escKw = escapeIlike(rawKw);
 
-        let query = supabase
-          .from('virtual_museum_items') // sesuai permintaan
-          .select('*', { count: 'exact' })
-          .order('name', { ascending: true, nullsFirst: false })
-          .range(from, to);
+        const tablesToTry = activeTable
+          ? ([activeTable, ...TABLE_CANDIDATES.filter((t) => t !== activeTable)] as string[])
+          : (TABLE_CANDIDATES as unknown as string[]);
 
-        if (kw) {
-          // cari di title/name/description
-          query = query.or(
-            `title.ilike.%${kw}%,name.ilike.%${kw}%,description.ilike.%${kw}%`
-          );
+        let lastError: any = null;
+        let fetched = false;
+
+        for (const table of tablesToTry) {
+          for (const orderCol of ORDER_COLUMNS) {
+            let base = supabase.from(table).select('*', { count: 'exact' });
+
+            if (escKw) {
+              base = base.or(
+                `name.ilike.%${escKw}%,description.ilike.%${escKw}%`
+              );
+            }
+
+            const { data, error, count } = await base
+              .order(orderCol, { ascending: true, nullsFirst: false })
+              .range(from, to);
+
+            if (!error) {
+              setTotal(count ?? 0);
+              if (opts?.reset) {
+                setItems((data ?? []) as ItemRow[]);
+                setPage(1);
+              } else {
+                setItems((prev) => [...prev, ...((data ?? []) as ItemRow[])]);
+              }
+              setActiveTable(table as (typeof TABLE_CANDIDATES)[number]);
+              fetched = true;
+              break;
+            } else {
+              lastError = error;
+              // Kolom tidak ada → coba kolom berikutnya
+              if ((error as any)?.code === '42703' || /column .* does not exist/i.test(error.message)) {
+                continue;
+              }
+              // Tabel tidak ada → coba tabel berikutnya
+              if ((error as any)?.code === '42P01' || /relation .* does not exist/i.test(error.message)) {
+                break;
+              }
+              // Error lain → coba tabel berikutnya
+              break;
+            }
+          }
+          if (fetched) break;
         }
 
-        const { data, error, count } = await query;
-        if (error) throw error;
-
-        setTotal(count ?? 0);
-        if (opts?.reset) {
-          setItems((data ?? []) as ItemRow[]);
-          setPage(1);
-        } else {
-          setItems(prev => [...prev, ...((data ?? []) as ItemRow[])]);
-        }
+        if (!fetched) throw lastError ?? new Error('Gagal mengambil data dari database.');
       } catch (err: unknown) {
-        if (err instanceof Error) {
-          setErrorMsg(err.message);
-        } else {
-          setErrorMsg('Gagal memuat koleksi.');
+        if (opts?.reset) {
+          setItems([]);
+          setTotal(0);
         }
+        setErrorMsg(err instanceof Error ? err.message : 'Gagal memuat koleksi.');
       } finally {
         setLoading(false);
       }
     },
-    [page, pageSize, search]
+    [activeTable, page, search]
   );
 
-  // initial load
+  // Initial load
   useEffect(() => {
     fetchItems({ reset: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // load next page
+  // Load next page
   useEffect(() => {
     if (page > 1) fetchItems();
   }, [page, fetchItems]);
 
+  // AUTO RESET: saat input dikosongkan, fetch semua data lagi (tanpa menunggu submit)
+  useEffect(() => {
+    const was = prevSearchRef.current;
+    if (was !== '' && search === '' && !loading) {
+      setItems([]);
+      setTotal(0);
+      setPage(1);
+      setActiveTable(null);
+      fetchItems({ reset: true, keyword: '' });
+    }
+    prevSearchRef.current = search;
+  }, [search, loading, fetchItems]);
+
   const onSubmitSearch = ({ searchValue }: { searchValue: string }) => {
-    setSearch(searchValue);
+    // Kalau submit kosong → tampilkan semua data
+    const kw = searchValue.trim();
+    setSearch(kw);
     setItems([]);
     setTotal(0);
     setPage(1);
-    fetchItems({ reset: true, keyword: searchValue }); // anti-stale
+    setActiveTable(null);
+    fetchItems({ reset: true, keyword: kw }); // kw bisa '' → fetch all
   };
 
   const onLoadMore = () => {
-    if (!loading && hasMore) setPage(p => p + 1);
+    if (!loading && hasMore) setPage((p) => p + 1);
   };
 
   return (
@@ -109,17 +162,18 @@ export default function SectionCollectionHero() {
         headline="Menghadirkan Koleksi Budaya Indonesia dalam Visualisasi 3D Interaktif"
         description="Nikmati pengalaman unik menjelajahi benda-benda budaya Indonesia melalui koleksi 3D interaktif yang dapat diputar, diperbesar, dan dipelajari dengan mudah di Adiwidia."
         search={search}
-        placeholder="Cari koleksi 3D"
+        onChangeSearch={setSearch}
         onSubmitAction={onSubmitSearch}
+        placeholder="Cari koleksi 3D"
+        searchIcon="submit"
+        searchInputSize="small"
+        searchDisabled={loading}
       >
         <>
           <section className="section-collection section-content-gap">
-            {errorMsg && (
-              <div className="text-red-600 text-sm mb-3">{errorMsg}</div>
-            )}
+            {errorMsg && <div className="text-red-600 text-sm mb-3">{errorMsg}</div>}
 
             <div className="section-content">
-              {/* Skeleton saat first load */}
               {loading && items.length === 0 && (
                 <>
                   {[...Array(8)].map((_, i) => (
@@ -128,7 +182,6 @@ export default function SectionCollectionHero() {
                 </>
               )}
 
-              {/* Items */}
               {items.map((row) => (
                 <CardCollection
                   key={row.id ?? row.slug}
