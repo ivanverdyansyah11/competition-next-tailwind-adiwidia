@@ -1,20 +1,86 @@
-import Image from "next/image";
+'use client';
 
-export default function ChatRoom() {
-    return (
-        <div className="chat-room">
-            <div className="room-chat-question">
-                <p className="question">Halo Adiwidia, bisa rekomendasikan saya destinasi budaya yang terkenal di Jawa Tengah?</p>
+import Image from 'next/image';
+import { useEffect, useRef } from 'react';
+
+type ChatMessage = {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+};
+
+interface ChatRoomProps {
+  messages?: ChatMessage[];
+  isLoading?: boolean;
+  brandLogoSrc?: string; // avatar asisten
+}
+
+export default function ChatRoom({
+  messages = [],
+  isLoading = false,
+  brandLogoSrc = '/image/brand/logo.svg',
+}: ChatRoomProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const endRef = useRef<HTMLDivElement>(null);
+
+  // Auto scroll ke bawah saat pesan bertambah / loading berubah
+  useEffect(() => {
+    // scroll smooth jika viewport sudah di-mount
+    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading]);
+
+  return (
+    <div className="chat-room" ref={containerRef}>
+      {messages.map((msg) =>
+        msg.role === 'user' ? (
+          <div key={msg.id} className="room-chat-question">
+            <p className="question whitespace-pre-wrap">{msg.content}</p>
+          </div>
+        ) : (
+          <div key={msg.id} className="room-chat-answer">
+            <div className="answer-profile">
+              <Image
+                src={brandLogoSrc}
+                alt="Profile Image"
+                width={16}
+                height={16}
+                className="profile-image"
+              />
             </div>
-            <div className="room-chat-answer">
-                <div className="answer-profile">
-                    <Image src="/image/brand/logo.svg" alt="Profile Image" width={16} height={16} className="profile-image"/>
-                </div>
-                <p className="answer">Tentu! Di Jawa Tengah, salah satu destinasi budaya terkenal adalah Candi Borobudur di Magelang. Candi ini merupakan warisan dunia UNESCO dan memiliki relief yang penuh makna filosofi kehidupan. Apakah Anda ingin saya tampilkan rute dan informasi kunjungan di Google Maps?</p>
+            <p className="answer whitespace-pre-wrap">{msg.content}</p>
+          </div>
+        )
+      )}
+
+      {/* Indikator "asisten sedang mengetik" */}
+      {isLoading && (
+        <div className="room-chat-answer">
+          <div className="answer-profile">
+            <Image
+              src={brandLogoSrc}
+              alt="Profile Image"
+              width={16}
+              height={16}
+              className="profile-image"
+            />
+          </div>
+          <div className="answer">
+            <div className="flex items-center gap-1">
+              <span className="inline-block w-2 h-2 rounded-full bg-gray-500 animate-bounce" />
+              <span
+                className="inline-block w-2 h-2 rounded-full bg-gray-500 animate-bounce"
+                style={{ animationDelay: '0.1s' }}
+              />
+              <span
+                className="inline-block w-2 h-2 rounded-full bg-gray-500 animate-bounce"
+                style={{ animationDelay: '0.2s' }}
+              />
             </div>
-            <div className="room-chat-question">
-                <p className="question">Menarik sekali! Kalau dari kuliner, makanan khas yang harus dicoba di Sumatra Barat apa ya?</p>
-            </div>
+          </div>
         </div>
-    );
+      )}
+
+      <div ref={endRef} />
+    </div>
+  );
 }

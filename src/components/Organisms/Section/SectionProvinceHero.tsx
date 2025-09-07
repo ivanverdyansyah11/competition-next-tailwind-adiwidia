@@ -14,9 +14,9 @@ type CultureRow = {
   id: string | number;
   slug: string;
   name?: string | null;
-  title?: string | null;   
+  title?: string | null;
   location?: string | null;
-  image_url?: string | null;
+  media_url?: string | null;
   category_slug?: string;
   province_slug?: string;
   // tambahkan field lain jika ada
@@ -42,7 +42,7 @@ export default function SectionProvinceHero() {
   const hasMore = items.length < total;
 
   const getTitle = (row: CultureRow) => row.name || row.title || '';
-  const getImage = (row: CultureRow) => row.image_url || '/image/destination/destination-1.png';
+  const getImage = (row: CultureRow) => row.media_url || '/image/destination/destination-1.png';
   const getLocation = (row: CultureRow) => row.location || province;
 
   const fetchCultures = useCallback(

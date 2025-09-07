@@ -83,11 +83,11 @@ export default function SectionDetailCulture() {
         <ButtonCopy />
       </div>
 
-      <div className="detail-culture-image">
+      <div className="w-full">
         {loading ? (
-          <div className="w-full h-[300px] md:h-[420px] rounded-xl bg-gray-100 animate-pulse" />
+          <div className="w-full h-[300px] md:h-[420px] rounded-[60px] bg-gray-100 animate-pulse overflow-hidden" />
         ) : (
-          <Image src={imageSrc!} alt={titleText || 'Thumbnail Image'} fill className="image-full" />
+          <img src={imageSrc!} alt={titleText || 'Thumbnail Image'} className="lg:h-[620px] lg:p-[40px] lg:rounded-[60px] w-full object-cover object-top" />
         )}
       </div>
 
@@ -129,7 +129,7 @@ export default function SectionDetailCulture() {
         <CardChatAI />
       </div>
 
-      
+
     </section>
   );
 }

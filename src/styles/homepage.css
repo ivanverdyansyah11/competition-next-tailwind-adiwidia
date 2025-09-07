@@ -803,9 +803,9 @@
     }
 
     section.section-detail-culture .detail-culture-image {
-        @apply relative w-full aspect-square rounded-[32px] overflow-hidden;
+        @apply relative w-full aspect-square rounded-[60px] overflow-hidden;
         @apply md:h-[440px] md:p-[32px] md:rounded-[40px];
-        @apply lg:h-[520px] lg:p-[40px] lg:rounded-[60px];
+        @apply lg:h-[620px] lg:p-[40px] lg:rounded-[60px];
     }
 
     section.section-detail-culture .detail-culture-content {

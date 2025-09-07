@@ -42,7 +42,7 @@ export default function SectionCategoryHero() {
   const hasMore = items.length < total;
 
   // helpers untuk handle perbedaan nama kolom
-  const getProvinceTitle = (row: Row) => row.province_name || row.name || '';
+  const getProvinceTitle = (row: Row) => {console.log(row); return row.province_name || row.name || ''};
   const getProvinceDesc  = (row: Row) => row.description || '';
   const getTotalCount    = (row: Row) =>
     (row.total_cultures ?? row.total_characters ?? 0);
@@ -84,12 +84,8 @@ export default function SectionCategoryHero() {
         } else {
           setItems(prev => [...prev, ...(data ?? [])]);
         }
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          setErrorMsg(err.message);
-        } else {
-          setErrorMsg('Gagagl memuat provinsi.');
-        }
+      } catch (err: any) {
+        setErrorMsg(err?.message ?? 'Failed to load provinces.');
       } finally {
         setLoading(false);
       }

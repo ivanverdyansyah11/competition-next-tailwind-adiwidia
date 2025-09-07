@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/utils/supabase';
 import { SketchfabEmbed } from './3dViewer';
+import CardChatAICollection from '@/components/Molecules/Card/CardChatAICollection';
 
 type ItemRow = {
   id?: string | number | null;
@@ -134,7 +135,7 @@ export default function SectionDetailCollection() {
         </div>
 
         {/* Tetap tampilkan Chat AI di sisi kanan */}
-        <CardChatAI />
+        <CardChatAICollection />
       </div>
     </section>
   );
