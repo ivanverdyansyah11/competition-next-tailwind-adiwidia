@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bb7203b-ec2e-4179-9322-acb482ef55fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(homepage)/culture/[category]/detail/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Molecules/Card/CardFolktale.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Organisms/Section/SectionDetailFolktale.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Organisms/Section/SectionFolktale.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Templates/DetailFolktalePage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Organisms/Topbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Organisms/Topbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Organisms/Section/SectionDetailCollection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Organisms/Section/SectionDetailCollection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Organisms/Section/SectionDetailCulture.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Organisms/Section/SectionDetailCulture.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,23 +36,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/2025/September/portfolio-next-tailwind-adiwidia/src/components/Organisms/Section",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\2025\\September\\portfolio-next-tailwind-adiwidia\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/2025/August/company-profile-next-tailwind-taktick&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\2025\\September\\portfolio-next-tailwind-adiwidia\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\components\Organisms\Section" />
@@ -65,11 +62,11 @@
       <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\app\(homepage)\culture\[category]\detail\[folktale_slug]" />
       <recent name="D:\2025\September\portfolio-next-tailwind-adiwidia\src\app\(chat)" />
       <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\components\Organisms\Section" />
       <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\app\(homepage)\budaya" />
       <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\components\Organisms\Section\Main" />
-      <recent name="D:\2025\August\portfolio-next-tailwind-adiwidia\src\components\Molecules\Section" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -105,7 +102,9 @@
       <workItem from="1757084569444" duration="1403000" />
       <workItem from="1757201561348" duration="5860000" />
       <workItem from="1757251928267" duration="759000" />
-      <workItem from="1757252708419" duration="934000" />
+      <workItem from="1757252708419" duration="1769000" />
+      <workItem from="1757254617376" duration="27000" />
+      <workItem from="1757255548981" duration="974000" />
     </task>
     <servers />
   </component>
