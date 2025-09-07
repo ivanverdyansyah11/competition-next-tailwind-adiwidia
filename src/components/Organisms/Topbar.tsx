@@ -23,6 +23,12 @@ export default function Topbar({onClickAction}: Props) {
                 {category.category_name}
             </Link>
           ))}
+            <Link href={`/culture/cerita-rakyat`} className="topbar-link group/link" onClick={onClickAction}>
+                <div className="link-icon group-hover/link:bg-primary">
+                    <Icon icon="hugeicons:globe-02" className="size-4 icon" />
+                </div>
+                Cerita Rakyat
+            </Link>
         </div>
     );
 }
