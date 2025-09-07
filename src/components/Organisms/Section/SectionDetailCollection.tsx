@@ -84,9 +84,9 @@ export default function SectionDetailCollection() {
 
       <div className="detail-collection-frame">
         {loading ? (
-          <div className="w-full h-[360px] md:h-[460px] rounded-xl bg-gray-100 animate-pulse" />
+          <div className="w-full h-full rounded-xl bg-gray-100 animate-pulse" />
         ) : modelId ? (
-          <SketchfabEmbed modelId={modelId} className="h-[360px] md:h-[460px]" />
+          <SketchfabEmbed modelId={modelId} className="h-full md:full"/>
         ) : (
           <p className="frame-caption text-gray-500">Asset 3D belum tersedia</p>
         )}

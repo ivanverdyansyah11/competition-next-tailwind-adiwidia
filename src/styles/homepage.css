@@ -326,7 +326,7 @@
     }
 
     nav.navbar .navbar-menu .menu-item {
-        @apply relative z-1 rounded-full px-3 py-2.5 bg-transparent text-[0.813rem] duration-300;
+        @apply relative z-1 rounded-full px-3.5 py-3 bg-transparent text-[0.813rem] duration-300 text-nowrap;
         @apply hover:bg-dark/[0.04];
     }
 
@@ -652,9 +652,9 @@
 
     /* SECTION PROVINCE */
     section.section-province .section-content {
-        @apply w-full columns-2 gap-[16px] space-y-[16px];
-        @apply md:columns-3;
-        @apply lg:columns-4 lg:gap-[20px] lg:space-y-[20px];
+        @apply w-full grid grid-cols-2 gap-[16px];
+        @apply md:grid-cols-3;
+        @apply lg:grid-cols-4 lg:gap-[20px];
     }
 
     section.section-province .section-content .card-province {
@@ -681,9 +681,9 @@
 
     /* SECTION CULTURE */
     section.section-culture .section-content {
-        @apply w-full columns-2 gap-[16px] space-y-[16px];
-        @apply md:columns-3;
-        @apply lg:columns-4 lg:gap-[20px] lg:space-y-[20px];
+        @apply w-full grid grid-cols-2 gap-[16px];
+        @apply md:grid-cols-3;
+        @apply lg:grid-cols-4 lg:gap-[20px];
     }
 
     section.section-culture .section-content .card-culture {
@@ -707,9 +707,9 @@
 
     /* SECTION COLLECTION */
     section.section-collection .section-content {
-        @apply w-full columns-2 gap-[16px] space-y-[16px];
-        @apply md:columns-3;
-        @apply lg:columns-4 lg:gap-[20px] lg:space-y-[20px];
+        @apply w-full grid grid-cols-2 gap-[16px];
+        @apply md:grid-cols-3;
+        @apply lg:grid-cols-4 lg:gap-[20px];
     }
 
     section.section-collection .section-content .card-collection {
@@ -736,9 +736,9 @@
     }
 
     section.section-detail-collection .detail-collection-frame {
-        @apply w-full aspect-square flex items-center justify-center rounded-[32px] border border-dark/[0.12];
-        @apply md:h-[440px] md:p-[32px] md:rounded-[40px];
-        @apply lg:h-[520px] lg:p-[40px] lg:rounded-[60px];
+        @apply w-full aspect-square flex items-center justify-center rounded-[32px] border border-dark/[0.12] overflow-hidden;
+        @apply md:h-[440px] md:rounded-[40px];
+        @apply lg:h-[520px] lg:rounded-[60px];
     }
 
     section.section-detail-collection .detail-collection-frame .frame-caption {
