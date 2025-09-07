@@ -712,16 +712,16 @@
         @apply lg:grid-cols-4 lg:gap-[20px];
     }
 
-    section.section-collection .section-content .card-collection {
+    .card-collection {
         @apply break-inside-avoid flex flex-col p-[16px] rounded-[12px] border border-dark/[0.12];
         @apply lg:p-[20px] lg:rounded-[20px];
     }
 
-    section.section-collection .section-content .card-collection .collection-title {
+    .card-collection .collection-title {
         @apply text-[0.913rem] mb-[4px];
     }
 
-    section.section-collection .section-content .card-collection .collection-description {
+    .card-collection .collection-description {
         @apply text-[0.875rem] text-dark/[0.62] mb-[12px];
     }
     /* END SECTION COLLECTION */

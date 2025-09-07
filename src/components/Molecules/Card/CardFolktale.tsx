@@ -1,24 +1,22 @@
-'use client'
-import Link from "next/link";
+import ButtonCustom from "@/components/Atoms/Button/ButtonCustom";
 
 type Props = {
-    redirect: string,
-    image: string,
     title: string,
     location: string,
+    redirect: string,
 }
 
-export default function CardFolktale({redirect, image, title, location}: Props) {
+export default function CardFolktale({title, location, redirect}: Props) {
     return (
-        <Link href={redirect} className="card-culture group/card">
-            <div className="culture-image wrapper-image aspect-square">
-                <img src={image} alt="Folktale Image" className="image image-full group-hover/card:scale-[102%] aspect-square"/>
-            </div>
-            <h6 className="culture-title">{title}</h6>
-            <div className="culture-location">
-              <span className="dot bg-primary"></span>
-              <p className="line-clamp-1"> {location} </p>
-            </div>
-        </Link>
+        <div className="card-collection">
+            <h6 className="collection-title">{title}</h6>
+            <p className="collection-description line-clamp-2">{location}</p>
+            <ButtonCustom
+                redirect={redirect}
+                style="button-small-secondary"
+                label="Lihat Koleksi"
+                className="w-full"
+            />
+        </div>
     )
 }
