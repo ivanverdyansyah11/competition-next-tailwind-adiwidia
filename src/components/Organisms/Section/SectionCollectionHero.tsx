@@ -65,8 +65,12 @@ export default function SectionCollectionHero() {
         } else {
           setItems(prev => [...prev, ...((data ?? []) as ItemRow[])]);
         }
-      } catch (err: any) {
-        setErrorMsg(err?.message ?? 'Gagal memuat koleksi.');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setErrorMsg(err.message);
+        } else {
+          setErrorMsg('Gagal memuat koleksi.');
+        }
       } finally {
         setLoading(false);
       }

@@ -42,13 +42,14 @@ export default function SectionCulture() {
     try {
       setLoading(true);
       setErrorMsg('');
+
       let query = supabase
-        .from('view_cultures_with_category_province')
-        .select('*')
-        .eq('category_slug', category)
-        .eq('province_slug', province)
-        .order('name', { ascending: true, nullsFirst: false })
-        .limit(8);
+          .from('view_cultures_with_category_province')
+          .select('*')
+          .eq('category_slug', category)
+          .eq('province_slug', province)
+          .order('name', { ascending: true, nullsFirst: false })
+          .limit(8);
 
       if (culture_slug) {
         query = query.neq('slug', culture_slug);
@@ -58,8 +59,12 @@ export default function SectionCulture() {
       if (error) throw error;
 
       setItems((data ?? []) as CultureRow[]);
-    } catch (err: any) {
-      setErrorMsg(err?.message ?? 'Gagal memuat data budaya terkait.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMsg(err.message);
+      } else {
+        setErrorMsg('Gagal memuat data budaya terkait.');
+      }
       setItems([]);
     } finally {
       setLoading(false);

@@ -40,15 +40,19 @@ export default function SectionDetailCulture() {
       setErrorMsg('');
 
       const { data, error } = await supabase
-        .from('cultures')
-        .select('*')
-        .eq('slug', culture_slug)
-        .single();
+          .from('cultures')
+          .select('*')
+          .eq('slug', culture_slug)
+          .single();
 
       if (error) throw error;
       setData(data as CultureRow);
-    } catch (err: any) {
-      setErrorMsg(err?.message ?? 'Gagal memuat detail budaya.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMsg(err.message);
+      } else {
+        setErrorMsg('Gagal memuat detail budaya.');
+      }
       setData(null);
     } finally {
       setLoading(false);
@@ -83,7 +87,7 @@ export default function SectionDetailCulture() {
         {loading ? (
           <div className="w-full h-[300px] md:h-[420px] rounded-xl bg-gray-100 animate-pulse" />
         ) : (
-          <img src={imageSrc!} alt={titleText || 'Thumbnail Image'} className="image-full" />
+          <Image src={imageSrc!} alt={titleText || 'Thumbnail Image'} fill className="image-full" />
         )}
       </div>
 

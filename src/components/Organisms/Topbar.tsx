@@ -1,12 +1,12 @@
 'use client'
 import { supabase } from "@/utils/supabase";
-import { Icon, InlineIcon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import Link from "next/link";
 
 type Props = {
     onClickAction: () => void;
 }
-const { data:categories, error } = await supabase
+const { data:categories } = await supabase
   .from('categories')
   .select()
 

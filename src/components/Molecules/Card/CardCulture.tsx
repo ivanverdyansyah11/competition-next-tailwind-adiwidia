@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
     redirect: string,
@@ -12,7 +13,7 @@ export default function CardCulture({redirect, image, title, location}: Props) {
     return (
         <Link href={redirect} className="card-culture group/card">
             <div className="culture-image wrapper-image aspect-square">
-                <img src={image} alt="Culture Image" className="image image-full group-hover/card:scale-[102%] aspect-square"/>
+                <Image src={image} alt="Culture Image" fill className="image image-full group-hover/card:scale-[102%] aspect-square"/>
             </div>
             <h6 className="culture-title">{title}</h6>
             <div className="culture-location">

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import InputSearch from "@/components/Atoms/Input/InputSearch";
 import {useState} from "react";
 import ChatHeader from "@/components/Atoms/ParticleChatAI/ChatHeader";

@@ -16,16 +16,14 @@ export default function SectionMap() {
     culture_slug: string;
   }>();
 
-  if (category !== 'destinasi-budaya') return null;
-
   const [embedSrc, setEmbedSrc] = useState<string | null>(null);
 
   const fetchMap = useCallback(async () => {
     const { data, error } = await supabase
-      .from('view_cultures_with_category_province')
-      .select('maps_url')
-      .eq('slug', culture_slug)
-      .single();
+        .from('view_cultures_with_category_province')
+        .select('maps_url')
+        .eq('slug', culture_slug)
+        .single();
 
     if (error || !data) {
       setEmbedSrc(null);
@@ -33,8 +31,7 @@ export default function SectionMap() {
     }
 
     const row = data as CultureRow;
-
-    let src = row.maps_url
+    const src = row.maps_url;
 
     setEmbedSrc(src || null);
   }, [culture_slug]);
@@ -43,16 +40,16 @@ export default function SectionMap() {
     fetchMap();
   }, [fetchMap]);
 
-  if (!embedSrc) return null;
+  if (category !== 'destinasi-budaya' || !embedSrc) return null;
 
   return (
-    <section className="section-map section-mt-gap">
-      <iframe
-        className="map-content"
-        src={embedSrc}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
-    </section>
+      <section className="section-map section-mt-gap">
+        <iframe
+            className="map-content"
+            src={embedSrc}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+        />
+      </section>
   );
 }

@@ -81,8 +81,12 @@ export default function SectionProvinceHero() {
         } else {
           setItems(prev => [...prev, ...(data ?? [])]);
         }
-      } catch (err: any) {
-        setErrorMsg(err?.message ?? 'Gagal memuat data.');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setErrorMsg(err.message);
+        } else {
+          setErrorMsg('Gagal memuat data.');
+        }
       } finally {
         setLoading(false);
       }
@@ -95,7 +99,7 @@ export default function SectionProvinceHero() {
     setTotal(0);
     setPage(1);
     fetchCultures({ reset: true });
-  }, [category, province]);
+  }, [category, province, fetchCultures]);
 
   useEffect(() => {
     if (page > 1) fetchCultures();

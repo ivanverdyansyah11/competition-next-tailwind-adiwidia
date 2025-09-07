@@ -84,8 +84,12 @@ export default function SectionCategoryHero() {
         } else {
           setItems(prev => [...prev, ...(data ?? [])]);
         }
-      } catch (err: any) {
-        setErrorMsg(err?.message ?? 'Failed to load provinces.');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setErrorMsg(err.message);
+        } else {
+          setErrorMsg('Gagagl memuat provinsi.');
+        }
       } finally {
         setLoading(false);
       }

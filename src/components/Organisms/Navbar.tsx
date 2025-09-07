@@ -27,7 +27,7 @@ export default function Navbar() {
                         <Link href="/" className={`menu-item ${pathname === '/' ? 'active' : ''}`} onClick={() => setIsPopupCategoryOpen(false)}>Beranda</Link>
                         <Link href="/about" className={`menu-item ${pathname === '/about' ? 'active' : ''}`} onClick={() => setIsPopupCategoryOpen(false)}>Tentang</Link>
                         <button type="button" className={`menu-item ${pathname.startsWith('/culture') ? 'active' : ''}`} onClick={togglePopupCategory}>Kategori</button>
-                        <Link href="/collection" className={`menu-item ${pathname.startsWith('/collection') ? 'active' : ''}`} onClick={() => setIsPopupCategoryOpen(false)}>Koleksi</Link>
+                        <Link href="/collection" className={`menu-item ${pathname.startsWith('/collection') ? 'active' : ''}`} onClick={() => setIsPopupCategoryOpen(false)}>Koleksi 3D</Link>
                     </div>
                     <a href="/chat" target="_blank" className="navbar-button w-fit">
                         Tanya AI

@@ -38,15 +38,19 @@ export default function SectionDetailCollection() {
       setErrorMsg('');
 
       const { data, error } = await supabase
-        .from('virtual_museum_items')
-        .select('*' )
-        .eq('slug', collection_slug)
-        .single();
+          .from('virtual_museum_items')
+          .select('*')
+          .eq('slug', collection_slug)
+          .single();
 
       if (error) throw error;
       setData(data as ItemRow);
-    } catch (err: any) {
-      setErrorMsg(err?.message ?? 'Gagal memuat koleksi.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMsg(err.message);
+      } else {
+        setErrorMsg('Gagal memuat koleksi.');
+      }
       setData(null);
     } finally {
       setLoading(false);

@@ -43,6 +43,7 @@ Dashboard admin dilengkapi fitur analitik:
 * [Zustand](https://zustand-demo.pmnd.rs/) – state management sederhana & ringan
 * [Tailwind CSS](https://tailwindcss.com/) – styling utility-first
 * [shadcn/ui](https://ui.shadcn.com/) – komponen UI modern
+* [Framer Motion](https://motion.dev/) – animasi interaktif & smooth
 
 ## 🛠️ Development
 
