@@ -93,7 +93,7 @@ export default function SectionDetailFolktale() {
 
       <div className="detail-culture-content">
         <div className="content-card">
-          <div className="card-body">
+          <div className="card-body !pt-0">
             <div className="body-group">
               <div className="body-header">
                 <div className="header-icon">
