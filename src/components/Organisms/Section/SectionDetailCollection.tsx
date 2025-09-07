@@ -69,6 +69,8 @@ export default function SectionDetailCollection() {
     data?.media_3d_url?.trim() ||
     null;
 
+  console.log(descriptionHTML)
+
   return (
     <section className="section-detail-collection section-content-gap section-top-hero">
       <div className="detail-collection-header">
@@ -95,7 +97,7 @@ export default function SectionDetailCollection() {
 
       <div className="detail-collection-content">
         <div className="content-card">
-          <div className="card-body">
+          <div className="card-body !pt-0">
             <div className="body-group" id="description">
               <div className="body-header">
                 <div className="header-icon">
